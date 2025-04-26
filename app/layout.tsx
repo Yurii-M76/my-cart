@@ -19,8 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
+      <link rel="shortcut icon" href="/logo.svg" />
       <body className={`${manropeSans.variable}`}>
-        {children}
+        <div className="container">{children}</div>
       </body>
     </html>
   );
