@@ -1,0 +1,29 @@
+.header {
+  border-bottom: 1px solid var(--outline-color);
+  padding: 6px 20px;
+  background-color: var(--bg-color-white);
+  block-size: 60px;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.hello {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+}
