@@ -1,9 +1,11 @@
+import { Header } from "@/components";
+
 const Home = () => {
   return (
-    <div>
+    <>
+      <Header />
       <main>main</main>
-      <footer>footer</footer>
-    </div>
+    </>
   );
 };
 
