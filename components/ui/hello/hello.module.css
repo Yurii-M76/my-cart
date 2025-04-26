@@ -1,0 +1,9 @@
+.welcomeText {
+  color: var(--text-color-gray);
+  font-weight: bold;
+}
+
+.userName {
+  color: var(--text-color-dark);
+  font-weight: bold;
+}
