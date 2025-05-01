@@ -1,0 +1,7 @@
+.notification {
+  display: block;
+  background-color: transparent;
+  background-image: url("/icons/bell.svg");
+  inline-size: 24px;
+  block-size: 24px;
+}
