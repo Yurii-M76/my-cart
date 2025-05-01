@@ -48,7 +48,11 @@
 .marker {
   display: block;
   border-radius: 50%;
-  background-color: var(--accent-color);
+  background-color: var(--color-light-blue);
   inline-size: 8px;
   block-size: 8px;
+}
+
+.accent {
+  background-color: var(--accent-color);
 }

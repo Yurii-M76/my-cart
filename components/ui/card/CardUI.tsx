@@ -4,8 +4,13 @@ import { useRouter } from "next/navigation";
 import { TCard } from "@/types";
 import classes from "./card.module.css";
 
-const CardUI: FC<TCard> = ({ label, icon, count, path }) => {
+const CardUI: FC<TCard> = ({ label, icon, count, accent, path }) => {
   const router = useRouter();
+
+  const markerClasses = [classes.marker, accent ? classes.accent : null]
+    .filter(Boolean)
+    .join(" ");
+
   const handleClick = () => {
     router.push(path);
   };
@@ -20,7 +25,7 @@ const CardUI: FC<TCard> = ({ label, icon, count, path }) => {
       {count > 0 && (
         <div className={classes.count}>
           {count}
-          <span className={classes.marker}></span>
+          <span className={markerClasses}></span>
         </div>
       )}
     </div>
