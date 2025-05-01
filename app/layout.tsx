@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import { Header } from "@/components";
 import "./globals.css";
 
 const manropeSans = Manrope({
@@ -21,7 +22,10 @@ export default function RootLayout({
     <html lang="ru">
       <link rel="shortcut icon" href="/logo.svg" />
       <body className={`${manropeSans.variable}`}>
-        <div className="container">{children}</div>
+        <div className="container">
+          <Header />
+          <main>{children}</main>
+        </div>
       </body>
     </html>
   );
