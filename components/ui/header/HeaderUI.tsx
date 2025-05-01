@@ -10,11 +10,13 @@ type THeaderUI = {
 const HeaderUI: FC<THeaderUI> = ({ hello, profile, notification }) => {
   return (
     <header className={classes.header}>
-      <div className={classes.header__container}>
-        <div className={classes.hello}>{hello}</div>
-        <div className={classes.header__right}>
-          <div>{notification}</div>
-          <div>{profile}</div>
+      <div className="section">
+        <div className={classes.header__items}>
+          <div className={classes.hello}>{hello}</div>
+          <div className={classes.header__right}>
+            <div>{notification}</div>
+            <div>{profile}</div>
+          </div>
         </div>
       </div>
     </header>

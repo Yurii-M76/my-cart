@@ -48,3 +48,10 @@ a {
   gap: 50px;
   margin: 0 auto;
 }
+
+.section {
+  display: block;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 6px 20px;
+}
