@@ -1,0 +1,19 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background-color: var(--color-light-blue);
+  inline-size: 40px;
+  block-size: 40px;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  background-image: url("/icons/avatar.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

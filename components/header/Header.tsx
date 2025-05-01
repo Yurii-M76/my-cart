@@ -1,10 +1,13 @@
-import Hello from "../hello/Hello";
-import HeaderUI from "../ui/header/HeaderUI";
+import { Hello } from "../hello";
+import { Profile } from "../profile";
+import { HeaderUI } from "../ui";
 
 const Header = () => {
   const hello = <Hello />;
+  const profile = <Profile />;
+
   return (
-    <HeaderUI hello={hello} notification={"notification"} profile={"profile"} />
+    <HeaderUI hello={hello} notification={"notification"} profile={profile} />
   );
 };
 
