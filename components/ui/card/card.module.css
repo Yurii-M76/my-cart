@@ -1,0 +1,50 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid var(--outline-color);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-color-white);
+  inline-size: 170px;
+  block-size: 110px;
+}
+
+.count {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+.label {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+.icon {
+  display: flex;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  inline-size: 48px;
+  block-size: 50px;
+}
+
+.marker {
+  display: block;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  inline-size: 8px;
+  block-size: 8px;
+}
