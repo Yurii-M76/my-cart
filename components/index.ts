@@ -1,2 +1,2 @@
-export { default as Header } from "./header/Header";
-export { default as Hello } from "./hello/Hello";
+export * from "./header";
+export * from "./hello";
