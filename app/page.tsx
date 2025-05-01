@@ -1,12 +1,7 @@
-import { Header } from "@/components";
+import { Cards } from "@/components";
 
 const Home = () => {
-  return (
-    <>
-      <Header />
-      <main>main</main>
-    </>
-  );
+  return <Cards />;
 };
 
 export default Home;
