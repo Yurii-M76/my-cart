@@ -1,0 +1,20 @@
+.addButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-color-white);
+  background-image: url("/icons/add-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+  inline-size: 60px;
+  block-size: 60px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
