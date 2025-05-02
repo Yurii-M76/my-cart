@@ -6,11 +6,11 @@ import classes from "./page.module.css";
 const PageUI: FC<TPage> = ({ title, children }) => {
   return (
     <div className="section">
-      <div className={classes.pageHeader}>
+      <div className={classes.head}>
         <h2>{title}</h2>
         <BackButtonUI label="Назад" />
       </div>
-      {children}
+      <div className={classes.content}>{children}</div>
     </div>
   );
 };
