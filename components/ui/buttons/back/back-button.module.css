@@ -1,0 +1,18 @@
+.backButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-blue);
+  border-radius: 16px;
+  color: var(--color-blue);
+  font-weight: bold;
+  font-size: var(--font-size-sm);
+  background-color: var(--bg-color-white);
+  inline-size: 80px;
+  block-size: 26px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
