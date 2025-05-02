@@ -1,0 +1,25 @@
+.save {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: flex-end;
+  border: 1px solid var(--outline-color);
+  border-radius: 8px;
+  padding: 8px;
+  color: inherit;
+  font-size: 10px;
+  background-color: var(--bg-color-white);
+  background-image: url("/icons/cart.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: top 6px;
+  background-position-x: center;
+  inline-size: 68px;
+  block-size: 60px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
