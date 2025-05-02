@@ -23,6 +23,7 @@ body {
 }
 
 body {
+  height: 100vh;
   color: var(--text-color-dark);
   font-family: var(--font-manrope-sans);
   font-size: var(--font-size-md);
@@ -30,6 +31,10 @@ body {
   background: var(--app-bg-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  height: 100%;
 }
 
 * {
@@ -48,6 +53,7 @@ a {
   flex-direction: column;
   gap: 30px;
   margin: 0 auto;
+  block-size: inherit;
 }
 
 .section {
@@ -57,4 +63,5 @@ a {
   max-width: 1024px;
   margin: 0 auto;
   padding: 6px 20px;
+  block-size: inherit;
 }
