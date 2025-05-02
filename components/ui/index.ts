@@ -4,3 +4,4 @@ export * from "./profile";
 export * from "./notification";
 export * from "./card";
 export * from "./cards";
+export * from "./page";
