@@ -10,9 +10,13 @@ type TBackButtonUI = {
 const BackButtonUI: FC<TBackButtonUI> = ({ label }) => {
   const router = useRouter();
   return (
-    <div className={classes.backButton} onClick={() => router.back()}>
+    <button
+      type="button"
+      className={classes.backButton}
+      onClick={() => router.back()}
+    >
       {label}
-    </div>
+    </button>
   );
 };
 
