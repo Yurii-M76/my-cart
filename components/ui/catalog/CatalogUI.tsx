@@ -27,7 +27,7 @@ const CatalogUI: FC<TCatalog> = ({
             total={totalPrice}
             items={{ count: favorites, total: totalItems }}
           />
-          <SaveButtonUI />
+          <SaveButtonUI isDisabled={!favorites} />
         </div>
       </div>
     </div>
