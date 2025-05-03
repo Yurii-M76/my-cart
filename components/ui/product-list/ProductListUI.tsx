@@ -1,8 +1,7 @@
-import { FC } from "react";
-import { TCatalog } from "@/types";
+import { TProduct } from "@/types";
 import classes from "./product-list.module.css";
 
-const ProductListUI: FC<TCatalog> = ({ items }) => {
+const ProductListUI = ({ items }: { items: TProduct[] }) => {
   const setFavoriteClasses = (v: boolean) => {
     return [classes.favorite, v ? classes.isFavorite : null]
       .filter(Boolean)
