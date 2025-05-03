@@ -1,7 +1,13 @@
 import { TProduct } from "@/types";
 import classes from "./product-list.module.css";
 
-const ProductListUI = ({ items }: { items: TProduct[] }) => {
+const ProductListUI = ({
+  items,
+  setFavorites,
+}: {
+  items: TProduct[];
+  setFavorites: (id: string) => void;
+}) => {
   const setFavoriteClasses = (v: boolean) => {
     return [classes.favorite, v ? classes.isFavorite : null]
       .filter(Boolean)
@@ -26,6 +32,7 @@ const ProductListUI = ({ items }: { items: TProduct[] }) => {
             </div>
             <button
               type="button"
+              onClick={() => setFavorites(item.id)}
               className={setFavoriteClasses(item.isFavorite)}
             />
           </div>
