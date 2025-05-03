@@ -1,0 +1,74 @@
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  border-bottom: 2px solid var(--bg-color-white);
+  padding-bottom: 8px;
+  inline-size: 100%;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.label {
+  font-weight: 600;
+  font-size: var(--font-size-md);
+}
+
+.property {
+  font-size: var(--font-size-sm);
+}
+
+.params {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.count {
+  color: var(--dimmed);
+}
+
+.count__num {
+  color: var(--text-color-dark);
+  font-weight: bold;
+  font-size: var(--font-size-md);
+}
+
+.favorite {
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  color: inherit;
+  background-color: var(--bg-color-white);
+  background-image: url("/icons/star.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px;
+  inline-size: 40px;
+  block-size: 40px;
+}
+
+.isFavorite {
+  background-image: url("/icons/star-filled.svg");
+}
+
