@@ -39,13 +39,27 @@ const items: TProduct[] = [
     label: "Фарш МИРАТОРГ Домашний охл. лоток 500г",
     price: 239.99,
     category: "Категория",
-    count: 1,
-    isFavorite: false,
+    count: 2,
+    isFavorite: true,
   },
 ];
 
 const Catalog = () => {
-  return <CatalogUI items={items} />;
+  const totalPrice = items.reduce(
+    (acc, item) => acc + (item.isFavorite ? item.price * item.count : 0),
+    0
+  );
+
+  const favorites = items.filter((item) => item.isFavorite).length;
+
+  return (
+    <CatalogUI
+      items={items}
+      totalItems={items.length}
+      totalPrice={totalPrice.toLocaleString()}
+      favorites={favorites}
+    />
+  );
 };
 
 export default Catalog;
