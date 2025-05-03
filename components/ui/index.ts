@@ -9,3 +9,4 @@ export * from "./buttons";
 export * from "./catalog";
 export * from "./price";
 export * from "./product-list";
+export * from "./icons";
