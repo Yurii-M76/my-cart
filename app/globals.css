@@ -50,6 +50,10 @@ a {
   text-decoration: none;
 }
 
+ul, li {
+  list-style: none;
+}
+
 .container {
   display: flex;
   flex-direction: column;
