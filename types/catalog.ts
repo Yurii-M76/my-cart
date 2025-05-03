@@ -5,4 +5,5 @@ export type TCatalog = {
   totalItems: number;
   totalPrice: string;
   favorites: number;
+  setFavotites: (id: string) => void;
 };
