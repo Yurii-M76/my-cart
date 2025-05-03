@@ -2,7 +2,7 @@ import { FC } from "react";
 import classes from "./price.module.css";
 
 type TPriceUI = {
-  total: number;
+  total: string;
   items: { count: number; total: number };
   variant: "cart" | "star";
 };
