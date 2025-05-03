@@ -25,6 +25,10 @@
 .label {
   font-weight: 600;
   font-size: var(--font-size-md);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .property {
@@ -66,6 +70,10 @@
   background-size: 22px;
   inline-size: 40px;
   block-size: 40px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .isFavorite {
