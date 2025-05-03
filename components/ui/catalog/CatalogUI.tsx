@@ -1,11 +1,16 @@
 import { FC } from "react";
 import { AddButtonUI, SaveButtonUI } from "../buttons";
-import { ProductListUI } from "../product-list";
 import { PriceUI } from "../price";
+import { ProductListUI } from "../product-list";
 import { TCatalog } from "@/types";
 import classes from "./catalog.module.css";
 
-const CatalogUI: FC<TCatalog> = ({ items }) => {
+const CatalogUI: FC<TCatalog> = ({
+  items,
+  totalItems,
+  totalPrice,
+  favorites,
+}) => {
   return (
     <div className={classes.catalog}>
       <div className={classes.list}>
@@ -17,9 +22,9 @@ const CatalogUI: FC<TCatalog> = ({ items }) => {
         </div>
         <div className={classes.cart}>
           <PriceUI
-            variant="cart"
-            total={1223.9}
-            items={{ count: 3, total: 11 }}
+            variant="star"
+            total={totalPrice}
+            items={{ count: favorites, total: totalItems}}
           />
           <SaveButtonUI />
         </div>
