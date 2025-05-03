@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import { TProduct } from "@/types";
 import { CatalogUI } from "../ui";
 
@@ -45,19 +47,30 @@ const items: TProduct[] = [
 ];
 
 const Catalog = () => {
-  const totalPrice = items.reduce(
+  const [state, setState] = useState(items);
+  const setFavorites = (id: string) => {
+    setState((items) =>
+      [...items].map((item) => ({
+        ...item,
+        isFavorite: item.id === id ? !item.isFavorite : item.isFavorite,
+      }))
+    );
+  };
+
+  const totalPrice = state.reduce(
     (acc, item) => acc + (item.isFavorite ? item.price * item.count : 0),
     0
   );
 
-  const favorites = items.filter((item) => item.isFavorite).length;
+  const favorites = state.filter((item) => item.isFavorite).length;
 
   return (
     <CatalogUI
-      items={items}
-      totalItems={items.length}
+      items={state}
+      totalItems={state.length}
       totalPrice={totalPrice.toLocaleString()}
       favorites={favorites}
+      setFavotites={setFavorites}
     />
   );
 };
