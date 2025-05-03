@@ -10,11 +10,12 @@ const CatalogUI: FC<TCatalog> = ({
   totalItems,
   totalPrice,
   favorites,
+  setFavotites,
 }) => {
   return (
     <div className={classes.catalog}>
       <div className={classes.list}>
-        <ProductListUI items={items} />
+        <ProductListUI items={items} setFavorites={setFavotites} />
       </div>
       <div className={classes.bottom}>
         <div className={classes.button}>
@@ -24,7 +25,7 @@ const CatalogUI: FC<TCatalog> = ({
           <PriceUI
             variant="star"
             total={totalPrice}
-            items={{ count: favorites, total: totalItems}}
+            items={{ count: favorites, total: totalItems }}
           />
           <SaveButtonUI />
         </div>
