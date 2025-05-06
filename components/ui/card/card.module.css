@@ -44,15 +44,3 @@
   inline-size: 48px;
   block-size: 50px;
 }
-
-.marker {
-  display: block;
-  border-radius: 50%;
-  background-color: var(--color-light-blue);
-  inline-size: clamp(0.5rem, 0.443rem + 0.284vw, 0.625rem);
-  block-size: clamp(0.5rem, 0.443rem + 0.284vw, 0.625rem);
-}
-
-.accent {
-  background-color: var(--accent-color);
-}

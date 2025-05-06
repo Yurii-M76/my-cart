@@ -1,15 +1,12 @@
 "use client";
 import { FC } from "react";
 import { useRouter } from "next/navigation";
+import { MarkerUI } from "../marker";
 import { TCard } from "@/types";
 import classes from "./card.module.css";
 
 const CardUI: FC<TCard> = ({ label, icon, count, accent, path }) => {
   const router = useRouter();
-
-  const markerClasses = [classes.marker, accent ? classes.accent : null]
-    .filter(Boolean)
-    .join(" ");
 
   const handleClick = () => {
     router.push(path);
@@ -25,7 +22,7 @@ const CardUI: FC<TCard> = ({ label, icon, count, accent, path }) => {
       {count > 0 && (
         <div className={classes.count}>
           {count}
-          <span className={markerClasses}></span>
+          <MarkerUI color={accent ? "accent" : "blue"} size="sm" />
         </div>
       )}
     </div>
