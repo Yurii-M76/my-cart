@@ -65,25 +65,3 @@
   font-weight: bold;
   font-size: var(--font-size-md);
 }
-
-.favorite {
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-  color: inherit;
-  background-color: var(--bg-color-white);
-  background-image: url("/icons/star.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 22px;
-  inline-size: 40px;
-  block-size: 40px;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.isFavorite {
-  background-image: url("/icons/star-filled.svg");
-}

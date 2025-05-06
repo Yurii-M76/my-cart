@@ -1,6 +1,7 @@
 import { TProduct } from "@/types";
-import classes from "./product-list.module.css";
 import { MarkerUI } from "../marker";
+import { FavoritesButtonUI } from "../buttons";
+import classes from "./product-list.module.css";
 
 const ProductListUI = ({
   items,
@@ -9,12 +10,6 @@ const ProductListUI = ({
   items: TProduct[];
   setFavorites: (id: string) => void;
 }) => {
-  const setFavoriteClasses = (v: boolean) => {
-    return [classes.favorite, v ? classes.isFavorite : null]
-      .filter(Boolean)
-      .join(" ");
-  };
-
   return (
     <ul className={classes.items}>
       {items.map((item) => (
@@ -34,10 +29,10 @@ const ProductListUI = ({
             <div className={classes.count}>
               x<span className={classes.count__num}>{item.count}</span>
             </div>
-            <button
-              type="button"
+
+            <FavoritesButtonUI
+              active={item.isFavorite}
               onClick={() => setFavorites(item.id)}
-              className={setFavoriteClasses(item.isFavorite)}
             />
           </div>
         </li>
