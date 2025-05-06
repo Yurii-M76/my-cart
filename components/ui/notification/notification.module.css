@@ -2,6 +2,9 @@
   display: block;
   background-color: transparent;
   background-image: url("/icons/bell.svg");
-  inline-size: 24px;
-  block-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  inline-size: var(--header-icon-size);
+  block-size: var(--header-icon-size);
 }
