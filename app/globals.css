@@ -12,10 +12,10 @@
   --color-carrot: #f36223;
   --dimmed: #b3bac5;
   --spacing-10: clamp(0.625rem, 0.224rem + 2.137vw, 1.25rem);
-  --font-size-sm: 12px;
-  --font-size-md: 16px;
-  --font-size-lg: 20px;
-  --font-size-xl: 24px;
+  --font-size-sm: clamp(0.75rem, 0.693rem + 0.284vw, 0.875rem);
+  --font-size-md: clamp(1rem, 0.943rem + 0.284vw, 1.125rem);
+  --font-size-lg: clamp(1.25rem, 1.193rem + 0.284vw, 1.375rem);
+  --font-size-xl: clamp(1.5rem, 1.443rem + 0.284vw, 1.625rem);
 }
 
 html,
