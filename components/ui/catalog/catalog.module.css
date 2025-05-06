@@ -34,7 +34,7 @@
   }
 
   .cart {
-    inline-size: 354px;
+    inline-size: clamp(22.125rem, 20.818rem + 6.534vw, 25rem);
   }
 
   .button {
