@@ -3,3 +3,4 @@ export * from "./page";
 export * from "./catalog";
 export * from "./product";
 export * from "./icon";
+export * from "./marker";

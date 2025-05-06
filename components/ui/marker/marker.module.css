@@ -1,0 +1,32 @@
+.marker {
+  display: block;
+  border-radius: 50%;
+}
+
+.blue {
+  background-color: var(--color-light-blue);
+}
+
+.accent {
+  background-color: var(--accent-color);
+}
+
+.sm {
+  inline-size: clamp(0.5rem, 0.443rem + 0.284vw, 0.625rem);
+  block-size: clamp(0.5rem, 0.443rem + 0.284vw, 0.625rem);
+}
+
+.md {
+  inline-size: clamp(0.625rem, 0.568rem + 0.284vw, 0.75rem);
+  block-size: clamp(0.625rem, 0.568rem + 0.284vw, 0.75rem);
+}
+
+.lg {
+  inline-size: clamp(0.75rem, 0.693rem + 0.284vw, 0.875rem);
+  block-size: clamp(0.75rem, 0.693rem + 0.284vw, 0.875rem);
+}
+
+.xl {
+  inline-size: clamp(0.875rem, 0.818rem + 0.284vw, 1rem);
+  block-size: clamp(0.875rem, 0.818rem + 0.284vw, 1rem);
+}
