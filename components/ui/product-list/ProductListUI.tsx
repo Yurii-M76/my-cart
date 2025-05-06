@@ -1,5 +1,6 @@
 import { TProduct } from "@/types";
 import classes from "./product-list.module.css";
+import { MarkerUI } from "../marker";
 
 const ProductListUI = ({
   items,
@@ -18,11 +19,14 @@ const ProductListUI = ({
     <ul className={classes.items}>
       {items.map((item) => (
         <li key={item.id} className={classes.item}>
-          <div className={classes.title}>
-            <div className={classes.label}>{item.label}</div>
-            <div className={classes.property}>
-              <span className={classes.price}>{item.price} ₽</span>
-              <span className={classes.category}> / {item.category}</span>
+          <div className={classes.groupRow}>
+            <MarkerUI color="blue" size="xl" style={{ marginTop: "3px" }} />
+            <div className={classes.title}>
+              <div className={classes.label}>{item.label}</div>
+              <div className={classes.property}>
+                <span className={classes.price}>{item.price} ₽</span>
+                <span className={classes.category}> / {item.category}</span>
+              </div>
             </div>
           </div>
 
