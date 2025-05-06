@@ -9,8 +9,8 @@
   font-weight: bold;
   font-size: var(--font-size-sm);
   background-color: var(--bg-color-white);
-  inline-size: 80px;
-  block-size: 26px;
+  inline-size: clamp(5rem, 4.893rem + 0.536vw, 5.375rem);
+  block-size: clamp(1.625rem, 1.568rem + 0.284vw, 1.75rem);
 
   &:hover {
     cursor: pointer;
