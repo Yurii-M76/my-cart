@@ -1,6 +1,6 @@
 import { TIcon } from "@/types";
 
-const CartIconUI = ({ width, height, fill, stroke, strokeWidth }: TIcon) => {
+const PlusIcon = ({ width, height, fill, stroke, strokeWidth }: TIcon) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,12 +14,10 @@ const CartIconUI = ({ width, height, fill, stroke, strokeWidth }: TIcon) => {
       strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-      <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-      <path d="M17 17h-11v-14h-2" />
-      <path d="M6 5l14 1l-1 7h-13" />
+      <path d="M12 5l0 14" />
+      <path d="M5 12l14 0" />
     </svg>
   );
 };
 
-export default CartIconUI;
+export default PlusIcon;
