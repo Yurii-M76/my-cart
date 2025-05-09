@@ -1,15 +1,9 @@
-import { TProduct } from "@/types";
+import { ProductSelection } from "@/components/product-selection";
 import { MarkerUI } from "../marker";
-import { FavoritesButtonUI } from "../buttons";
+import { TProduct } from "@/types";
 import classes from "./product-list.module.css";
 
-const ProductListUI = ({
-  items,
-  setFavorites,
-}: {
-  items: TProduct[];
-  setFavorites: (id: string) => void;
-}) => {
+const ProductListUI = ({ items }: { items: TProduct[] }) => {
   return (
     <ul className={classes.items}>
       {items.map((item) => (
@@ -25,15 +19,12 @@ const ProductListUI = ({
             </div>
           </div>
 
-          <div className={classes.params}>
+          <div className={classes.params} style={{ position: "relative" }}>
             <div className={classes.count}>
-              x<span className={classes.count__num}>{item.count}</span>
+              x<span className={classes.count__num}>1</span>
             </div>
 
-            <FavoritesButtonUI
-              active={item.isFavorite}
-              onClick={() => setFavorites(item.id)}
-            />
+            <ProductSelection isSelected={false} productId={item.id} />
           </div>
         </li>
       ))}
