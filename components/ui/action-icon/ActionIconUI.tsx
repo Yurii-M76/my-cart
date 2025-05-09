@@ -5,7 +5,7 @@ type TActionIconUI = {
   children: ReactNode;
   size: "sm" | "md" | "lg" | "xl";
   variant: "circle" | "box";
-  onClick: () => void;
+  onClick?: () => void;
   shadow?: boolean;
   style?: CSSProperties | undefined;
   disabled?: boolean;
