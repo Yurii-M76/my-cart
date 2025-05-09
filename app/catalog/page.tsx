@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import { CatalogUI, PageUI } from "@/components/ui";
+import { PageUI } from "@/components/ui";
+import { Catalog } from "@/components";
 
 const pageName = "Каталог";
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 const CatalogPage = () => {
   return (
     <PageUI title={pageName}>
-      <CatalogUI />
+      <Catalog />
     </PageUI>
   );
 };
