@@ -4,8 +4,8 @@ const PlusIcon = ({ width, height, fill, stroke, strokeWidth }: TIcon) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={width || "inherit"}
-      height={height || "inherit"}
+      width={width || "100%"}
+      height={height || "100%"}
       viewBox="0 0 24 24"
       fill={fill || "none"}
       stroke={fill ? fill : stroke || "currentColor"}
