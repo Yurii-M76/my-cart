@@ -5,9 +5,11 @@ import {
   useSelector as selectorHook,
 } from "react-redux";
 import productsSlice from "./productsSlice";
+import selectedProductsSlice from "./selectedProductsSlice";
 
 export const rootReducer = combineReducers({
   [productsSlice.reducerPath]: productsSlice.reducer,
+  [selectedProductsSlice.reducerPath]: selectedProductsSlice.reducer,
 });
 
 const store = configureStore({
