@@ -11,3 +11,5 @@ export * from "./price";
 export * from "./product-list";
 export * from "./icons";
 export * from "./marker";
+export * from "./product-count";
+export * from "./action-icon";
