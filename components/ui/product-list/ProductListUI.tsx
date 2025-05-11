@@ -1,9 +1,15 @@
 import { ProductSelection } from "@/components/product-selection";
 import { MarkerUI } from "../marker";
-import { TProduct } from "@/types";
+import { TProduct, TProductSelected } from "@/types";
 import classes from "./product-list.module.css";
 
-const ProductListUI = ({ items }: { items: TProduct[] }) => {
+const ProductListUI = ({
+  items,
+  selectHandler,
+}: {
+  items: TProduct[];
+  selectHandler: ({ id, count }: TProductSelected) => void;
+}) => {
   return (
     <ul className={classes.items}>
       {items.map((item) => (
@@ -24,7 +30,7 @@ const ProductListUI = ({ items }: { items: TProduct[] }) => {
               x<span className={classes.count__num}>1</span>
             </div>
 
-            <ProductSelection isSelected={false} productId={item.id} />
+            <ProductSelection productId={item.id} setSelected={selectHandler} />
           </div>
         </li>
       ))}
