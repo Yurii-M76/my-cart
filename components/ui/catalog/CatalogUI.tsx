@@ -1,7 +1,9 @@
 import { FC } from "react";
-import { AddButtonUI, SaveButtonUI } from "../buttons";
+import { ProductList } from "@/components/product-list";
+import { SaveButtonUI } from "../buttons";
 import { PriceUI } from "../price";
-import { ProductListUI } from "../product-list";
+import { ActionIconUI } from "../action-icon";
+import { PlusIconUI } from "../icons";
 import { TCatalog } from "@/types";
 import classes from "./catalog.module.css";
 
@@ -14,11 +16,13 @@ const CatalogUI: FC<TCatalog> = ({
   return (
     <div className={classes.catalog}>
       <div className={classes.list}>
-        <ProductListUI items={items} />
+        <ProductList items={items} />
       </div>
       <div className={classes.bottom}>
         <div className={classes.button}>
-          <AddButtonUI />
+          <ActionIconUI variant="circle" size="xl" shadow>
+            <PlusIconUI fill="var(--color-blue)" />
+          </ActionIconUI>
         </div>
         <div className={classes.cart}>
           <PriceUI
