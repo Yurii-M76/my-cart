@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { CartIconUI, StarIconUI } from "../icons";
 import classes from "./price.module.css";
 
 type TPriceUI = {
@@ -8,21 +9,22 @@ type TPriceUI = {
 };
 
 const PriceUI: FC<TPriceUI> = ({ total, items, variant }) => {
-  const classNames = [
-    classes.price,
-    variant === "cart" ? classes.cart : classes.star,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const icon =
+    variant === "star" ? (
+      <StarIconUI width={36} height={36} fill="var(--color-green)" />
+    ) : (
+      <CartIconUI width={36} height={36} />
+    );
 
   return (
-    <div className={classNames}>
-      <span>
+    <div className={classes.price}>
+      <div className={classes.group}>
+        {icon}
         <div className={classes.items}>
           {items.count} из {items.total}
         </div>
-        <div className={classes.total}>{total} ₽</div>
-      </span>
+      </div>
+      <div className={classes.total}>{total} ₽</div>
     </div>
   );
 };
