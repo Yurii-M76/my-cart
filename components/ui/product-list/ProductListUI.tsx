@@ -25,13 +25,7 @@ const ProductListUI = ({
             </div>
           </div>
 
-          <div className={classes.params} style={{ position: "relative" }}>
-            <div className={classes.count}>
-              x<span className={classes.count__num}>1</span>
-            </div>
-
-            <ProductSelection productId={item.id} setSelected={selectHandler} />
-          </div>
+          <ProductSelection productId={item.id} setSelected={selectHandler} />
         </li>
       ))}
     </ul>
