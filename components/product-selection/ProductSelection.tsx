@@ -2,18 +2,29 @@
 import { FC, useState } from "react";
 import { useSelector } from "@/store/store";
 import { getSelectedProducts } from "@/store/selectedProductsSlice";
-import { ActionIconUI, CheckIconUI, ProductCountUI, StarIconUI } from "../ui";
+import {
+  ActionIconUI,
+  CheckIconUI,
+  ProductCountUI,
+  ProductsSelectionUI,
+  StarIconUI,
+} from "../ui";
 import { TProductSelection } from "@/types";
 
 const ProductSelection: FC<TProductSelection> = ({
   productId,
   setSelected,
 }) => {
-  const getSelecteds = useSelector(getSelectedProducts);
+  const selectedItems = useSelector(getSelectedProducts);
   const [isActive, setIsActive] = useState(false);
   const [count, setCount] = useState<number>(1);
 
-  const isSelected = getSelecteds.find((item) => item.id === productId);
+  const isSelected: boolean = selectedItems.some(
+    (item) => item.id === productId
+  );
+  const countProductSelected: number =
+    selectedItems.find((item) => item.id === productId)?.count || 0;
+
   const starIsFilled = isSelected ? "var(--color-green)" : undefined;
   const starIcon = <StarIconUI fill={starIsFilled} />;
   const currentIcon = isActive ? <CheckIconUI /> : starIcon;
@@ -24,7 +35,10 @@ const ProductSelection: FC<TProductSelection> = ({
   };
 
   return (
-    <>
+    <ProductsSelectionUI
+      isSelected={isSelected}
+      countProductSelected={countProductSelected}
+    >
       {isActive && !isSelected && (
         <ProductCountUI count={count} setCount={setCount} />
       )}
@@ -43,7 +57,7 @@ const ProductSelection: FC<TProductSelection> = ({
       >
         {!isSelected ? currentIcon : starIcon}
       </ActionIconUI>
-    </>
+    </ProductsSelectionUI>
   );
 };
 
