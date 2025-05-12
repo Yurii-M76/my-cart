@@ -1,0 +1,19 @@
+.productsSelection {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.count {
+  color: var(--dimmed);
+}
+
+.count__num {
+  color: var(--text-color-dark);
+  font-weight: bold;
+  font-size: var(--font-size-md);
+}
