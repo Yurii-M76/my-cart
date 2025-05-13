@@ -22,14 +22,15 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <link rel="shortcut icon" href="/logo.svg" />
-      <body className={`${manropeSans.variable}`}>
-        <StoreProvider>
+      <StoreProvider>
+        <body className={`${manropeSans.variable}`}>
           <div className="container">
             <Header />
             <main>{children}</main>
           </div>
-        </StoreProvider>
-      </body>
+          <div id="modals"></div>
+        </body>
+      </StoreProvider>
     </html>
   );
 }

@@ -14,3 +14,5 @@ export * from "./marker";
 export * from "./product-count";
 export * from "./action-icon";
 export * from "./product-selection";
+export * from "./modal";
+export * from "./modal-overlay";

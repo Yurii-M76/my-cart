@@ -73,3 +73,28 @@ li {
   padding: 20px;
   block-size: inherit;
 }
+
+[data-scroll-locked="1"] {
+  overflow: hidden;
+}
+
+#modals {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 0.35s ease, visibility 0.1s ease;
+  transform: translate(0);
+  &.open {
+    visibility: visible;
+    opacity: 1;
+  }
+}
