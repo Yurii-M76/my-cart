@@ -1,9 +1,20 @@
 import { CartIconUI } from "../../icons";
 import classes from "./save-button.module.css";
 
-const SaveButtonUI = ({ isDisabled }: { isDisabled: boolean }) => {
+const SaveButtonUI = ({
+  onClick,
+  isDisabled,
+}: {
+  onClick: () => void;
+  isDisabled: boolean;
+}) => {
   return (
-    <button type="button" className={classes.save} disabled={isDisabled}>
+    <button
+      type="button"
+      className={classes.save}
+      onClick={onClick}
+      disabled={isDisabled}
+    >
       <CartIconUI />
       Сохранить
     </button>
