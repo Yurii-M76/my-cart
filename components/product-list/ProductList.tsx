@@ -13,7 +13,8 @@ const ProductList = ({
   selectedItems: TProductSelected[];
 }) => {
   const dispath = useDispatch();
-  const [selectedList, setSelectedList] = useState<TProductSelected[]>([]);
+  const [selectedList, setSelectedList] =
+    useState<TProductSelected[]>(selectedItems);
 
   const setList = ({ id, count }: TProductSelected) => {
     const existingItem = selectedList.find((item) => item.id === id);
