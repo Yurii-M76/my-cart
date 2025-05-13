@@ -5,9 +5,11 @@ import classes from "./product-list.module.css";
 
 const ProductListUI = ({
   items,
+  selectedItems,
   selectHandler,
 }: {
   items: TProduct[];
+  selectedItems: TProductSelected[];
   selectHandler: ({ id, count }: TProductSelected) => void;
 }) => {
   return (
@@ -25,7 +27,11 @@ const ProductListUI = ({
             </div>
           </div>
 
-          <ProductSelection productId={item.id} setSelected={selectHandler} />
+          <ProductSelection
+            productId={item.id}
+            selectedItems={selectedItems}
+            setSelected={selectHandler}
+          />
         </li>
       ))}
     </ul>

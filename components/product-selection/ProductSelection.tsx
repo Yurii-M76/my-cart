@@ -1,7 +1,5 @@
 "use client";
 import { FC, useState } from "react";
-import { useSelector } from "@/store/store";
-import { getSelectedProducts } from "@/store/selectedProductsSlice";
 import {
   ActionIconUI,
   CheckIconUI,
@@ -13,9 +11,9 @@ import { TProductSelection } from "@/types";
 
 const ProductSelection: FC<TProductSelection> = ({
   productId,
+  selectedItems,
   setSelected,
 }) => {
-  const selectedItems = useSelector(getSelectedProducts);
   const [isActive, setIsActive] = useState(false);
   const [count, setCount] = useState<number>(1);
 

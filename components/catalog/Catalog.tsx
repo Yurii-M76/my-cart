@@ -3,6 +3,7 @@ import { CatalogUI } from "../ui";
 import { useSelector } from "@/store/store";
 import { getProducts } from "@/store/productsSlice";
 import { getSelectedProducts } from "@/store/selectedProductsSlice";
+import { ProductList } from "../product-list";
 
 const Catalog = () => {
   const products = useSelector(getProducts);
@@ -15,11 +16,12 @@ const Catalog = () => {
 
   return (
     <CatalogUI
-      items={products}
       totalItems={products.length}
       totalPrice={totalPrice.toLocaleString()}
-      selected={selectedItems.length}
-    />
+      selectedLength={selectedItems.length}
+    >
+      <ProductList selectedItems={selectedItems} items={products} />
+    </CatalogUI>
   );
 };
 

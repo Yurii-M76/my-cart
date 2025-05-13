@@ -1,8 +1,8 @@
-import { TProduct } from "./product";
+import { ReactNode } from "react";
 
 export type TCatalog = {
-  items: TProduct[];
   totalItems: number;
   totalPrice: string;
-  selected: number;
+  selectedLength: number;
+  children: ReactNode;
 };

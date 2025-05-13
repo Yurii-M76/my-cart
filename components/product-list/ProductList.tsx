@@ -5,7 +5,13 @@ import { setSelectedProducts } from "@/store/selectedProductsSlice";
 import { ProductListUI } from "../ui";
 import { TProduct, TProductSelected } from "@/types";
 
-const ProductList = ({ items }: { items: TProduct[] }) => {
+const ProductList = ({
+  items,
+  selectedItems,
+}: {
+  items: TProduct[];
+  selectedItems: TProductSelected[];
+}) => {
   const dispath = useDispatch();
   const [selectedList, setSelectedList] = useState<TProductSelected[]>([]);
 
@@ -22,7 +28,13 @@ const ProductList = ({ items }: { items: TProduct[] }) => {
     dispath(setSelectedProducts(selectedList));
   }, [dispath, selectedList]);
 
-  return <ProductListUI items={items} selectHandler={setList} />;
+  return (
+    <ProductListUI
+      items={items}
+      selectedItems={selectedItems}
+      selectHandler={setList}
+    />
+  );
 };
 
 export default ProductList;
