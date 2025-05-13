@@ -11,6 +11,7 @@ const CatalogUI: FC<TCatalog> = ({
   totalPrice,
   selectedLength,
   children,
+  onSave,
 }) => {
   return (
     <div className={classes.catalog}>
@@ -27,7 +28,7 @@ const CatalogUI: FC<TCatalog> = ({
             total={totalPrice}
             items={{ count: selectedLength, total: totalItems }}
           />
-          <SaveButtonUI isDisabled={!selectedLength} />
+          <SaveButtonUI isDisabled={!selectedLength} onClick={onSave} />
         </div>
       </div>
     </div>
