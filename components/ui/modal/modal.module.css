@@ -3,12 +3,24 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-radius: 16px;
-  padding: 12px 20px 20px;
+  border-radius: clamp(0.75rem, calc(0.636rem + 0.568vw), 1rem); /* min: 12px, max: 16px */;
+  padding: clamp(0.875rem, calc(0.705rem + 0.852vw), 1.25rem); /* min: 14px, max: 20px */;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: var(--text-color-dark);
   font-size: var(--font-size-md);
   background-color: var(--bg-color-white);
-  inline-size: 400px;
-  block-size: 200px;
+  inline-size: clamp(20rem, calc(12.045rem + 39.773vw), 37.5rem); /* min: 320px, max: 600px */;
+  max-block-size: 80%;
+}
+
+.head {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.content {
+  overflow-Y: auto;
 }

@@ -1,5 +1,7 @@
 import { FC, memo, ReactNode } from "react";
 import { ModalOverlayUI } from "../modal-overlay";
+import { ActionIconUI } from "../action-icon";
+import { XIconUI } from "../icons";
 import classes from "./modal.module.css";
 
 type TModalUI = {
@@ -14,10 +16,18 @@ const ModalUI: FC<TModalUI> = memo(({ title, children, onClose }) => {
       <div className={classes.modal}>
         <div className={classes.head}>
           <h3>{title}</h3>
-          <div onClick={onClose}>close</div>
+          <ActionIconUI
+            size="md"
+            onClick={onClose}
+            variant="box"
+            style={{ padding: 0, width: "24px", height: "24px" }}
+          >
+            <XIconUI />
+          </ActionIconUI>
         </div>
-        {children}
+        <div className={classes.content}>{children}</div>
       </div>
+
       <ModalOverlayUI onClick={onClose} />
     </>
   );
