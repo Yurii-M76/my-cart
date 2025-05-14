@@ -6,32 +6,39 @@ import classes from "./modal.module.css";
 
 type TModalUI = {
   title: string;
+  size?: "sm" | "md" | "lg" | "fullScreen";
   onClose: () => void;
   children?: ReactNode;
 };
 
-const ModalUI: FC<TModalUI> = memo(({ title, children, onClose }) => {
-  return (
-    <>
-      <div className={classes.modal}>
-        <div className={classes.head}>
-          <h3>{title}</h3>
-          <ActionIconUI
-            size="md"
-            onClick={onClose}
-            variant="box"
-            style={{ padding: 0, width: "24px", height: "24px" }}
-          >
-            <XIconUI />
-          </ActionIconUI>
-        </div>
-        <div className={classes.content}>{children}</div>
-      </div>
+const ModalUI: FC<TModalUI> = memo(
+  ({ title, children, onClose, size = "md" }) => {
+    const modalClassNames = [classes.modal, classes[size]]
+      .filter(Boolean)
+      .join(" ");
 
-      <ModalOverlayUI onClick={onClose} />
-    </>
-  );
-});
+    return (
+      <>
+        <div className={modalClassNames}>
+          <div className={classes.head}>
+            <h3>{title}</h3>
+            <ActionIconUI
+              size="md"
+              onClick={onClose}
+              variant="box"
+              style={{ padding: 0, width: "24px", height: "24px" }}
+            >
+              <XIconUI />
+            </ActionIconUI>
+          </div>
+          <div className={classes.content}>{children}</div>
+        </div>
+
+        <ModalOverlayUI onClick={onClose} />
+      </>
+    );
+  }
+);
 
 ModalUI.displayName = "ModalUI";
 export default ModalUI;
