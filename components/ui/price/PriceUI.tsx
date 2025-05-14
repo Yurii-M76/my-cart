@@ -11,7 +11,11 @@ type TPriceUI = {
 const PriceUI: FC<TPriceUI> = ({ total, items, variant }) => {
   const icon =
     variant === "star" ? (
-      <StarIconUI width={36} height={36} fill="var(--color-green)" />
+      <StarIconUI
+        width={36}
+        height={36}
+        fill={!items.count ? "var(--dimmed)" : "var(--color-green)"}
+      />
     ) : (
       <CartIconUI width={36} height={36} />
     );
