@@ -4,7 +4,7 @@ import classes from "./button.module.css";
 type TButtonUI = {
   type: "button" | "submit" | "reset";
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   size?: "sm" | "md" | "lg" | "full";
   color?: "carrot" | "blue" | "gray";
   disabled?: boolean;
