@@ -11,6 +11,7 @@ const CatalogUI: FC<TCatalog> = ({
   totalPrice,
   selectedLength,
   children,
+  onProductCreate,
   onSave,
 }) => {
   return (
@@ -18,7 +19,12 @@ const CatalogUI: FC<TCatalog> = ({
       <div className={classes.list}>{children}</div>
       <div className={classes.bottom}>
         <div className={classes.button}>
-          <ActionIconUI variant="circle" size="xl" shadow>
+          <ActionIconUI
+            variant="circle"
+            size="xl"
+            shadow
+            onClick={onProductCreate}
+          >
             <PlusIconUI fill="var(--color-blue)" />
           </ActionIconUI>
         </div>
