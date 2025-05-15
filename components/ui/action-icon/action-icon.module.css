@@ -8,21 +8,6 @@
   border: none;
   color: var(--text-color-dark);
   background-color: var(--bg-color-white);
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:active {
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
-    transform: scale(0.95);
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    transform: none;
-    cursor: no-drop;
-  }
 }
 
 .sm {

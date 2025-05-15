@@ -13,13 +13,4 @@
   background-color: var(--bg-color-white);
   inline-size: 68px;
   block-size: 60px;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:disabled {
-    color: var(--dimmed);
-    cursor: not-allowed;
-  }
 }

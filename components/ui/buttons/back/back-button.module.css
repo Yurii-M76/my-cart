@@ -11,8 +11,4 @@
   background-color: var(--bg-color-white);
   inline-size: clamp(5rem, 4.893rem + 0.536vw, 5.375rem);
   block-size: clamp(1.625rem, 1.568rem + 0.284vw, 1.75rem);
-
-  &:hover {
-    cursor: pointer;
-  }
 }
