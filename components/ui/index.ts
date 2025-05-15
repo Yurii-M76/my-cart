@@ -16,3 +16,4 @@ export * from "./action-icon";
 export * from "./product-selection";
 export * from "./modal";
 export * from "./modal-overlay";
+export * from "./inputs";
