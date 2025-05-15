@@ -1,6 +1,7 @@
 .inputWrapper {
   display: flex;
   margin: 14px 0px;
+  inline-size: 100%;
 }
 
 .input {
@@ -22,14 +23,14 @@
 
 .label {
   color: var(--text-color-gray);
-  font-weight: bold;
-  font-size: var(--font-size-md);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
 }
 
 .column {
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 6px;
 }
 
 .row {
@@ -38,18 +39,20 @@
   gap: 20px;
 }
 
-.sm {
-  inline-size: clamp(18.75rem, calc(18.182rem + 2.841vw), 20rem); /* min: 320px, max: 300px */;
-}
+@media(min-width: 769px) {
+  .sm {
+    inline-size: clamp(18.75rem, calc(18.182rem + 2.841vw), 20rem); /* min: 320px, max: 300px */;
+  }
 
-.md {
-  inline-size: clamp(20rem, calc(17.727rem + 11.364vw), 25rem); /* min: 320px, max: 400px */;
-}
+  .md {
+    inline-size: clamp(20rem, calc(17.727rem + 11.364vw), 25rem); /* min: 320px, max: 400px */;
+  }
 
-.lg {
-  inline-size: clamp(20rem, calc(12.045rem + 39.773vw), 37.5rem); /* min: 320px, max: 600px */
-}
+  .lg {
+    inline-size: clamp(20rem, calc(12.045rem + 39.773vw), 37.5rem); /* min: 320px, max: 600px */
+  }
 
-.full {
-  inline-size: 100%;
+  .full {
+    inline-size: 100%;
+  }
 }
