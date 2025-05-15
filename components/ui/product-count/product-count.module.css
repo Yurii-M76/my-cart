@@ -27,20 +27,6 @@
   background-size: 12px;
   inline-size: 20px;
   block-size: 20px;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:active {
-    transform: scale(1.1);
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    transform: none;
-    cursor: no-drop;
-  }
 }
 
 .down {
