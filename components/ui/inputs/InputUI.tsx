@@ -24,7 +24,18 @@ const InputUI: FC<TInputUI> = ({ type, name, label, variant, size, style }) => {
       <label htmlFor={name} className={classes.label}>
         {label}
       </label>
-      <input id={name} type={type} className={classes.input} />
+      {type === "text" ? (
+        <input id={name} type="text" className={classes.input} />
+      ) : (
+        <input
+          id={name}
+          type="number"
+          className={classes.input}
+          min={0}
+          step={1}
+          pattern="[0-9]+([.][0-9]+)?"
+        />
+      )}
     </div>
   );
 };
