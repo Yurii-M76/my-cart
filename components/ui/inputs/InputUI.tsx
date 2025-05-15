@@ -7,10 +7,20 @@ type TInputUI = {
   label: string;
   variant?: "row" | "column";
   size?: "sm" | "md" | "lg" | "full";
+  error?: string | undefined;
   style?: CSSProperties | undefined;
 };
 
-const InputUI: FC<TInputUI> = ({ type, name, label, variant, size, style }) => {
+const InputUI: FC<TInputUI> = ({
+  type,
+  name,
+  label,
+  variant,
+  size,
+  error,
+  style,
+  ...props
+}) => {
   const classNamesInputWrapper = [
     classes.inputWrapper,
     !size ? classes.md : classes[size],
@@ -19,22 +29,46 @@ const InputUI: FC<TInputUI> = ({ type, name, label, variant, size, style }) => {
     .filter(Boolean)
     .join(" ");
 
+  const classNamesInput = [classes.input, error ? classes.inputError : null]
+    .filter(Boolean)
+    .join(" ");
+
+  const errorMessage = error && (
+    <span className={classes.errorMessage}>{error}</span>
+  );
+
   return (
     <div className={classNamesInputWrapper} style={style}>
       <label htmlFor={name} className={classes.label}>
         {label}
       </label>
       {type === "text" ? (
-        <input id={name} type="text" className={classes.input} />
+        <>
+          <input
+            type="text"
+            id={name}
+            key={name}
+            name={name}
+            className={classNamesInput}
+            {...props}
+          />
+          {errorMessage}
+        </>
       ) : (
-        <input
-          id={name}
-          type="number"
-          className={classes.input}
-          min={0}
-          step={1}
-          pattern="[0-9]+([.][0-9]+)?"
-        />
+        <>
+          <input
+            type="number"
+            id={name}
+            key={name}
+            name={name}
+            min={0}
+            step={1}
+            pattern="[0-9]+([.][0-9]+)?"
+            className={classNamesInput}
+            {...props}
+          />
+          {errorMessage}
+        </>
       )}
     </div>
   );

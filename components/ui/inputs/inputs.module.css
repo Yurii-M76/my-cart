@@ -1,6 +1,5 @@
 .inputWrapper {
   display: flex;
-  margin: 14px 0px;
   inline-size: 100%;
 }
 
@@ -21,6 +20,10 @@
   }
 }
 
+.inputError {
+  border: 1px solid var(--color-red);
+}
+
 .label {
   color: var(--text-color-gray);
   font-weight: 600;
@@ -37,6 +40,11 @@
   flex-direction: row;
   align-items: center;
   gap: 20px;
+}
+
+.errorMessage {
+  color: var(--color-red);
+  font-size: var(--font-size-xs);
 }
 
 @media(min-width: 769px) {
@@ -56,3 +64,4 @@
     inline-size: 100%;
   }
 }
+
