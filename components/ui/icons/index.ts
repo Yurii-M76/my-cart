@@ -1,5 +1,6 @@
 export { default as HomeIconUI } from "./HomeIcon";
 export { default as ProfileIconUI } from "./ProfileIcon";
+export { default as BellIconUI } from "./BellIcon";
 export { default as CartIconUI } from "./CartIcon";
 export { default as StarIconUI } from "./StarIcon";
 export { default as PlusIconUI } from "./PlusIcon";
