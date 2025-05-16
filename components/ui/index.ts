@@ -1,6 +1,5 @@
 export * from "./header";
 export * from "./hello";
-export * from "./notification";
 export * from "./card";
 export * from "./cards";
 export * from "./page";
