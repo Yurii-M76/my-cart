@@ -1,3 +1,5 @@
+"use client";
+import { useRouter } from "next/navigation";
 import HelloUI from "../ui/hello/helloUI";
 
 const mock = {
@@ -6,7 +8,14 @@ const mock = {
 };
 
 const Hello = () => {
-  return <HelloUI welcomeText={mock.welcome} userName={mock.userName} />;
+  const router = useRouter();
+  return (
+    <HelloUI
+      welcomeText={mock.welcome}
+      userName={mock.userName}
+      onClickToHome={() => router.push("/")}
+    />
+  );
 };
 
 export default Hello;
