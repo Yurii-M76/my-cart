@@ -16,7 +16,7 @@ const category = [
 ];
 
 const NewProductForm = () => {
-  const initialValues = {
+  const initialValues: TInitialState = {
     productName: "",
     category: "",
     price: null,
