@@ -1,0 +1,57 @@
+"use client";
+import { useForm } from "react-hook-form";
+import { ButtonUI, InputUI } from "@/components/ui";
+import { exceptions } from "@/constants";
+
+type TInitialState = {
+  listName: string;
+};
+
+const SaveShoppingListForm = ({ onCancel }: { onCancel: () => void }) => {
+  const initialValues: TInitialState = {
+    listName: "",
+  };
+
+  const { register, getValues, formState, reset, handleSubmit } =
+    useForm<TInitialState>({
+      defaultValues: initialValues,
+    });
+
+  const { isDirty, errors } = formState;
+
+  const onSubmit = () => {
+    console.log(getValues());
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} onReset={() => reset()}>
+      <InputUI
+        type="text"
+        label="Название списка"
+        size="full"
+        key={"productName"}
+        {...register("listName", { required: exceptions.form.required })}
+        error={errors.listName?.message}
+      />
+
+      <div className="formButtons right">
+        <ButtonUI
+          type="button"
+          label="Отменить"
+          color="gray"
+          size="sm"
+          onClick={onCancel}
+        />
+        <ButtonUI
+          type="submit"
+          label="Сохранить"
+          color="blue"
+          size="sm"
+          disabled={!isDirty}
+        />
+      </div>
+    </form>
+  );
+};
+
+export default SaveShoppingListForm;
