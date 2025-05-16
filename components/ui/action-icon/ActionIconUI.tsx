@@ -4,7 +4,8 @@ import classes from "./action-icon.module.css";
 type TActionIconUI = {
   children: ReactNode;
   size: "sm" | "md" | "lg" | "xl";
-  variant: "circle" | "box";
+  variant: "circle" | "box-br-8" | "box-br-12";
+  color?: "dark" | "light-blue" | "transparent";
   onClick?: () => void;
   shadow?: boolean;
   style?: CSSProperties | undefined;
@@ -16,6 +17,7 @@ const ActionIconUI: FC<TActionIconUI> = ({
   variant,
   shadow,
   children,
+  color,
   onClick,
   style,
   disabled,
@@ -24,6 +26,7 @@ const ActionIconUI: FC<TActionIconUI> = ({
     classes.actionIcon,
     classes[size],
     classes[variant],
+    color ? classes[color] : classes.white,
     shadow ? classes.shadow : null,
   ]
     .filter(Boolean)

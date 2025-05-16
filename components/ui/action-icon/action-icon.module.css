@@ -7,7 +7,6 @@
   align-items: center;
   border: none;
   color: var(--text-color-dark);
-  background-color: var(--bg-color-white);
 }
 
 .sm {
@@ -38,10 +37,30 @@
   border-radius: 50%;
 }
 
-.box {
-  border-radius: 6px;
+.box-br-8 {
+  border-radius: 8px;
+}
+
+.box-br-12 {
+  border-radius: 12px;
 }
 
 .shadow {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.white {
+  background-color: var(--bg-color-white);
+}
+
+.dark {
+  background-color: var(--text-color-dark);
+}
+
+.light-blue {
+  background-color: var(--color-light-blue);
+}
+
+.transparent {
+  background-color: transparent;
 }
