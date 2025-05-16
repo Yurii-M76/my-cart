@@ -10,6 +10,7 @@ type TSelectUI = {
   onChange: (event: SyntheticEvent<HTMLSelectElement, Event>) => void;
   variant?: "row" | "column";
   size?: "sm" | "md" | "lg" | "full";
+  error?: string | undefined;
   style?: CSSProperties | undefined;
 };
 
@@ -21,6 +22,7 @@ const SelectUI: FC<TSelectUI> = ({
   size,
   style,
   onChange,
+  error,
   ...props
 }) => {
   const classNamesInputWrapper = [
@@ -31,11 +33,19 @@ const SelectUI: FC<TSelectUI> = ({
     .filter(Boolean)
     .join(" ");
 
+  const classNamesInput = [classes.input, error ? classes.inputError : null]
+    .filter(Boolean)
+    .join(" ");
+
   const options = data.map((option) => (
     <option key={option.value} value={option.value}>
       {option.label}
     </option>
   ));
+
+  const errorMessage = error && (
+    <span className={classes.errorMessage}>{error}</span>
+  );
 
   return (
     <div className={classNamesInputWrapper}>
@@ -47,13 +57,14 @@ const SelectUI: FC<TSelectUI> = ({
         key={name}
         name={name}
         style={style}
-        className={classes.input}
+        className={classNamesInput}
         onChange={onChange}
         {...props}
       >
-        <option key={0} value={0} />
+        <option key={0} value={undefined} />
         {options}
       </select>
+      {errorMessage}
     </div>
   );
 };
