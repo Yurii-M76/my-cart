@@ -1,3 +1,17 @@
+.hello {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 14px;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+}
+
 .welcomeText {
   color: var(--text-color-gray);
   font-weight: bold;
