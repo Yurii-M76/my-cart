@@ -123,6 +123,10 @@ form > .formButtons {
   margin-top: var(--spacing-20);
 }
 
+form > .formButtons.right {
+  justify-content: flex-end;
+}
+
 .container {
   display: flex;
   flex-direction: column;
