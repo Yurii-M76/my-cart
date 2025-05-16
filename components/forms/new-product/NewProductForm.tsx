@@ -1,6 +1,7 @@
 "use client";
-import { ButtonUI, InputUI, SelectUI } from "@/components/ui";
 import { useForm } from "react-hook-form";
+import { ButtonUI, InputUI, SelectUI } from "@/components/ui";
+import { exceptions } from "@/constants";
 
 type TInitialState = {
   productName: string;
@@ -21,14 +22,12 @@ const NewProductForm = () => {
     price: null,
   };
 
-  const { register, getValues, formState, reset, watch, handleSubmit } =
+  const { register, getValues, formState, reset, handleSubmit } =
     useForm<TInitialState>({
       defaultValues: initialValues,
     });
 
-  const { isDirty, isValid } = formState;
-
-  console.log(isValid, watch());
+  const { isDirty, errors } = formState;
 
   const onSubmit = () => {
     console.log(getValues());
@@ -41,23 +40,24 @@ const NewProductForm = () => {
         label="Наименование"
         size="lg"
         key={"productName"}
-        {...register("productName", { required: "required" })}
-        error=""
+        {...register("productName", { required: exceptions.form.required })}
+        error={errors.productName?.message}
       />
       <SelectUI
         label="Категория"
         data={category}
         size="lg"
         key={"category"}
-        {...register("category", { required: "required" })}
+        {...register("category", { required: exceptions.form.required })}
+        error={errors.category?.message}
       />
       <InputUI
         type="number"
         label="Стоимость за единицу"
         size="lg"
         key={"price"}
-        {...register("price", { required: "required" })}
-        error=""
+        {...register("price", { required: exceptions.form.required })}
+        error={errors.price?.message}
       />
 
       <div className="formButtons">
