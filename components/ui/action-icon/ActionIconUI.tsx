@@ -5,6 +5,8 @@ type TActionIconUI = {
   children: ReactNode;
   size: "sm" | "md" | "lg" | "xl";
   variant: "circle" | "box-br-8" | "box-br-12";
+  label?: string;
+  outline?: boolean;
   color?: "dark" | "light-blue" | "transparent";
   onClick?: () => void;
   shadow?: boolean;
@@ -17,6 +19,8 @@ const ActionIconUI: FC<TActionIconUI> = ({
   variant,
   shadow,
   children,
+  label,
+  outline,
   color,
   onClick,
   style,
@@ -26,6 +30,7 @@ const ActionIconUI: FC<TActionIconUI> = ({
     classes.actionIcon,
     classes[size],
     classes[variant],
+    outline ? classes.outline : null,
     color ? classes[color] : classes.white,
     shadow ? classes.shadow : null,
   ]
@@ -41,6 +46,7 @@ const ActionIconUI: FC<TActionIconUI> = ({
       disabled={disabled}
     >
       {children}
+      {size === "xl" && label && <span className={classes.label}>{label}</span>}
     </button>
   );
 };

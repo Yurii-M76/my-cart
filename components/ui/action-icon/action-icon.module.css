@@ -1,11 +1,12 @@
 .actionIcon {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-direction: column;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
+  gap: 4px;
   border: none;
+  overflow: hidden;
   color: var(--text-color-dark);
 }
 
@@ -63,4 +64,12 @@
 
 .transparent {
   background-color: transparent;
+}
+
+.outline {
+  border: 1px solid var(--outline-color);
+}
+
+.label {
+  font-size: 9px;
 }
