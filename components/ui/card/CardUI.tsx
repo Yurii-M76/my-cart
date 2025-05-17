@@ -14,10 +14,7 @@ const CardUI: FC<TCard> = ({ label, icon, count, accent, path }) => {
 
   return (
     <div className={classes.card} onClick={handleClick}>
-      <div
-        className={classes.icon}
-        style={{ backgroundImage: `url(${icon})` }}
-      ></div>
+      <div className={classes.icon}>{icon}</div>
       <div className={classes.label}>{label}</div>
       {count > 0 && (
         <div className={classes.count}>

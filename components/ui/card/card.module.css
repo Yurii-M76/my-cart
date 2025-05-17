@@ -36,11 +36,7 @@
 }
 
 .icon {
-  display: flex;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  display: block;
   inline-size: 48px;
-  block-size: 50px;
+  block-size: 48px;
 }
