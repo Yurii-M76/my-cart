@@ -1,8 +1,7 @@
 import { FC } from "react";
-import { SaveButtonUI } from "../buttons";
 import { PriceUI } from "../price";
 import { ActionIconUI } from "../action-icon";
-import { PlusIconUI } from "../icons";
+import { CartIconUI, PlusIconUI } from "../icons";
 import { TCatalog } from "@/types";
 import classes from "./catalog.module.css";
 
@@ -34,7 +33,16 @@ const CatalogUI: FC<TCatalog> = ({
             total={totalPrice}
             items={{ count: selectedLength, total: totalItems }}
           />
-          <SaveButtonUI isDisabled={!selectedLength} onClick={onSave} />
+          <ActionIconUI
+            label="Сохранить"
+            size="xl"
+            variant="box-br-8"
+            outline
+            disabled={!selectedLength}
+            onClick={onSave}
+          >
+            <CartIconUI width={24} height={24} />
+          </ActionIconUI>
         </div>
       </div>
     </div>
