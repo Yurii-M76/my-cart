@@ -12,6 +12,7 @@ const PlusIcon = ({ width, height, fill, stroke, strokeWidth }: TIcon) => {
       strokeWidth={strokeWidth || "1.2"}
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ flexShrink: 0 }}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 5l0 14" />

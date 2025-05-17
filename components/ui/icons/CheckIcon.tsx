@@ -12,6 +12,7 @@ const CheckIcon = ({ width, height, fill, stroke, strokeWidth }: TIcon) => {
       strokeWidth={strokeWidth || "1.2"}
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ flexShrink: 0 }}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M5 12l5 5l10 -10" />

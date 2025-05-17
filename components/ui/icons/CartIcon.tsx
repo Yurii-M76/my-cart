@@ -12,6 +12,7 @@ const CartIconUI = ({ width, height, fill, stroke, strokeWidth }: TIcon) => {
       strokeWidth={strokeWidth || "1.2"}
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ flexShrink: 0 }}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
