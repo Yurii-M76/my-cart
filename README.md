@@ -1,8 +1,7 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Cart
+Web-app для контроля расходов ведения списка покупок.
 
-## Getting Started
-
-First, run the development server:
+## Запуск
 
 ```bash
 npm run dev
@@ -14,10 +13,29 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Приложение будет запущено на http://localhost:3000
 
 ## UI
 
 ![UI](<public/app ui.png>)
 
-## Description
+## Описание
+
+- Проект построен с использованием [Next.js](https://nextjs.org).
+- Возможность добавлять, редактировать и удалять записи.
+- Возможность фильтровать записи по категориям.
+- Возможность сортировать записи по дате и стоимости.
+- Возможность установки ограничения по стоимости корзины продуктов.
+
+## Stack
+- Frontend: Next.js, React, TypeScript
+- Backend: 
+- Database: PostgreSQL
+- UI: Figma + module CSS
+- State management: Redux Toolkit
+- Routing: Next.js
+- Build: Webpack
+- Deployment: Timeweb Cloud
+- Code formatting: Prettier
+- Code linting: ESLint
+- Testing: 
