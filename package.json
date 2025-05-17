@@ -6,9 +6,15 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "docker:up": "docker compose -f ./docker/postgres/docker-compose.yml --env-file=.env.development up -d",
+    "docker:down": "docker compose -f ./docker/postgres/docker-compose.yml --env-file=.env.development down",
+    "migrate:dev": "npx dotenv -e .env.development -- prisma migrate dev --name init",
+    "migrate:reset": "npx dotenv -e .env.development -- prisma migrate reset",
+    "migrate:prod": "npx dotenv -e .env.production -- prisma migrate dev --name init"
   },
   "dependencies": {
+    "@prisma/client": "^6.8.2",
     "@reduxjs/toolkit": "^2.8.1",
     "next": "15.3.1",
     "react": "^19.0.0",
@@ -23,6 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
+    "prisma": "^6.8.2",
     "typescript": "^5"
   }
 }
