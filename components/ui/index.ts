@@ -15,3 +15,4 @@ export * from "./product-selection";
 export * from "./modal";
 export * from "./modal-overlay";
 export * from "./inputs";
+export * from "./loader";
