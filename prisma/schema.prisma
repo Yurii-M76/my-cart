@@ -27,9 +27,9 @@ model Products {
   id            String      @id @default(cuid())
   label         String
   price         Float
-  description   String
-  category      ProductCategory    @relation(fields: [categoryId], references: [id])
-  categoryId    String
+  description   String?
+  category      ProductCategory?    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId    String?
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 
@@ -39,7 +39,7 @@ model Products {
 model ProductCategory {
   id            String      @id @default(cuid())
   label         String
-  description   String
+  description   String?
   products      Products[]
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
