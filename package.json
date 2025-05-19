@@ -14,7 +14,6 @@
     "migrate:prod": "npx dotenv -e .env.production -- prisma migrate dev --name init"
   },
   "dependencies": {
-    "@prisma/client": "^6.8.2",
     "@reduxjs/toolkit": "^2.8.1",
     "next": "15.3.1",
     "react": "^19.0.0",
