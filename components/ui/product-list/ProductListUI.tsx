@@ -22,7 +22,7 @@ const ProductListUI = ({
               <div className={classes.label}>{item.label}</div>
               <div className={classes.property}>
                 <span className={classes.price}>{item.price} ₽</span>
-                <span className={classes.category}> / {item.category}</span>
+                <span className={classes.category}> / {item.categoryId || "без категории"}</span>
               </div>
             </div>
           </div>
