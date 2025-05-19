@@ -19,7 +19,6 @@ export const selectedProductsSlice = createSlice({
   reducers: {
     setSelectedProducts: (state, action: PayloadAction<TProductSelected[]>) => {
       state.list = action.payload;
-      console.log(action.payload);
     },
   },
   selectors: {
