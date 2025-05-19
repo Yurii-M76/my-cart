@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useDispatch } from "@/store/store";
-import { setSelectedProducts } from "@/store/selectedProductsSlice";
+import { useDispatch } from "@/services/store";
+import { setSelectedProducts } from "@/services/selectedProductsSlice";
 import { ProductListUI } from "../ui";
 import { TProduct, TProductSelected } from "@/types";
 
