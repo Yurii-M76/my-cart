@@ -3,10 +3,9 @@
   inline-size: 100%;
 }
 
-.input {
+.input, .textarea {
   border: 1px solid var(--outline-color);
   border-radius: 8px;
-  padding: 0 14px;
   color: var(--text-color-dark);
   font-family: var(--font-manrope-sans);
   font-size: var(--font-size-md);
@@ -18,6 +17,18 @@
     border: 1px solid var(--dimmed);
     border-radius: 8px;
   }
+}
+
+.input {
+  padding: 0 14px;
+}
+
+.textarea {
+  padding: 7px 14px;
+  min-block-size: 90px;
+  max-block-size: 320px;
+  max-inline-size: 100%;
+  min-inline-size: 200px;
 }
 
 .inputError {
