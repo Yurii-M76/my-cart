@@ -1,6 +1,6 @@
-import { TProduct } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
-import { findProducts } from "./actions";
+import { createProduct, findProducts } from "./actions";
+import { TProduct } from "@/types";
 
 type TInitialState = {
   loading: boolean;
@@ -20,6 +20,7 @@ export const productsSlice = createSlice({
   reducers: {},
   selectors: {
     getProducts: (state) => state.products,
+    loading: (state) => state.loading,
   },
   extraReducers(builder) {
     builder
@@ -37,9 +38,25 @@ export const productsSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       });
+
+    builder
+      // create
+      .addCase(createProduct.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(createProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.products = [...state.products, action.payload];
+        state.error = null;
+      })
+      .addCase(createProduct.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 
 export const {} = productsSlice.actions;
-export const { getProducts } = productsSlice.selectors;
+export const { getProducts, loading } = productsSlice.selectors;
 export default productsSlice;
