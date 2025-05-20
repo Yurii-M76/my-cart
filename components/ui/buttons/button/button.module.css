@@ -7,6 +7,7 @@
   border: none;
   border-radius: 8px;
   padding: 0px 20px;
+  overflow: hidden;
   color: var(--text-color-dark);
   font-family: var(--font-manrope-sans);
   font-weight: 600;
@@ -17,15 +18,15 @@
 
 @media(min-width: 769px) {
   .sm {
-    inline-size: fit-content;
+    inline-size: 130px;
   }
 
   .md {
-    inline-size: 400px;
+    inline-size: 170px;
   }
 
   .lg {
-    inline-size: 600px;
+    inline-size: 200px;
   }
 
   .full {

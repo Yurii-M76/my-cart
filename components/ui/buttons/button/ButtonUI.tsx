@@ -1,4 +1,5 @@
 import { CSSProperties, FC } from "react";
+import { LoaderUI } from "../../loader";
 import classes from "./button.module.css";
 
 type TButtonUI = {
@@ -8,6 +9,7 @@ type TButtonUI = {
   size?: "sm" | "md" | "lg" | "full";
   color?: "carrot" | "blue" | "gray";
   disabled?: boolean;
+  isLoading?: boolean;
   style?: CSSProperties | undefined;
 };
 
@@ -18,6 +20,7 @@ const ButtonUI: FC<TButtonUI> = ({
   color,
   onClick,
   disabled,
+  isLoading,
   style,
 }) => {
   const classNames = [
@@ -36,7 +39,7 @@ const ButtonUI: FC<TButtonUI> = ({
       className={classNames}
       style={style}
     >
-      {label}
+      {isLoading ? <LoaderUI /> : label}
     </button>
   );
 };
