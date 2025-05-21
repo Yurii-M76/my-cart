@@ -1,4 +1,8 @@
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
   border-bottom: 1px solid var(--outline-color);
   background-color: var(--bg-color-white);
   block-size: clamp(3.75rem, 3.523rem + 1.136vw, 4.25rem);
