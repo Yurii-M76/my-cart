@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { PageUI } from "@/components/ui";
-import { NewProductForm } from "@/components";
+import { SaveProductForm } from "@/components";
 
 const pageName = "Новый продукт";
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const CatalogPage = () => {
   return (
     <PageUI title={pageName}>
-      <NewProductForm />
+      <SaveProductForm />
     </PageUI>
   );
 };

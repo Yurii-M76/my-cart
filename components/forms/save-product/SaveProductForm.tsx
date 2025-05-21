@@ -1,12 +1,18 @@
 "use client";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { ButtonUI, InputUI, SelectUI } from "@/components/ui";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "@/services/store";
+import { createProduct } from "@/services/products/actions";
+import { loading } from "@/services/products/productsSlice";
+import { ButtonUI, InputUI, SelectUI, TextAreaUI } from "@/components/ui";
 import { exceptions } from "@/constants";
 
 type TInitialState = {
   productName: string;
+  description: string;
   category: string;
-  price: number | null;
+  price: number;
 };
 
 const category = [
@@ -15,11 +21,15 @@ const category = [
   { value: "value3", label: "Home Goods" },
 ];
 
-const NewProductForm = () => {
+const SaveProductForm = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const isLoading = useSelector(loading);
   const initialValues: TInitialState = {
     productName: "",
+    description: "",
     category: "",
-    price: null,
+    price: 0,
   };
 
   const { register, getValues, formState, reset, handleSubmit } =
@@ -27,11 +37,21 @@ const NewProductForm = () => {
       defaultValues: initialValues,
     });
 
-  const { isDirty, errors } = formState;
+  const { isDirty, errors, isSubmitSuccessful } = formState;
 
   const onSubmit = () => {
-    console.log(getValues());
+    const newProduct = {
+      label: getValues("productName"),
+      description: getValues("description"),
+      price: +getValues("price"),
+    };
+
+    dispatch(createProduct(newProduct));
   };
+
+  useEffect(() => {
+    if (isSubmitSuccessful && !isLoading) router.push("/catalog");
+  }, [isLoading, isSubmitSuccessful, router]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} onReset={() => reset()}>
@@ -42,6 +62,12 @@ const NewProductForm = () => {
         key={"productName"}
         {...register("productName", { required: exceptions.form.required })}
         error={errors.productName?.message}
+      />
+      <TextAreaUI
+        label="Описание"
+        size="lg"
+        key={"description"}
+        {...register("description")}
       />
       <SelectUI
         label="Категория"
@@ -74,10 +100,11 @@ const NewProductForm = () => {
           color="blue"
           size="sm"
           disabled={!isDirty}
+          isLoading={isLoading}
         />
       </div>
     </form>
   );
 };
 
-export default NewProductForm;
+export default SaveProductForm;
