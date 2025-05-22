@@ -7,13 +7,18 @@ import classes from "./modal.module.css";
 type TModalUI = {
   title: string;
   size?: "sm" | "md" | "lg" | "fullScreen";
+  visible: boolean;
   onClose: () => void;
   children?: ReactNode;
 };
 
 const ModalUI: FC<TModalUI> = memo(
-  ({ title, children, onClose, size = "md" }) => {
-    const modalClassNames = [classes.modal, classes[size]]
+  ({ title, children, onClose, size = "md", visible }) => {
+    const modalClassNames = [
+      classes.modal,
+      classes[size],
+      visible ? classes.visible : null,
+    ]
       .filter(Boolean)
       .join(" ");
 
@@ -25,7 +30,7 @@ const ModalUI: FC<TModalUI> = memo(
             <ActionIconUI
               size="md"
               onClick={onClose}
-              variant="box"
+              variant="box-br-12"
               style={{ padding: 0, width: "24px", height: "24px" }}
             >
               <XIconUI />
@@ -34,7 +39,7 @@ const ModalUI: FC<TModalUI> = memo(
           <div className={classes.content}>{children}</div>
         </div>
 
-        <ModalOverlayUI onClick={onClose} />
+        <ModalOverlayUI onClick={onClose} visible={visible} />
       </>
     );
   }

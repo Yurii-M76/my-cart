@@ -12,36 +12,50 @@ type TModalProps = {
 
 const Modal: FC<TModalProps> = ({ title, children, isOpen, onClose }) => {
   const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
-  const [root, setRoot] = useState<HTMLElement | null>(null);
+  const [isVisible, setVisible] = useState(false);
 
-  if (root) root.dataset.scrollLocked = isOpen ? "1" : "0";
-  if (modalRoot) {
-    modalRoot.classList.toggle("open", isOpen);
-  }
-
-  useEffect(() => {
-    setRoot(document.body);
-    setModalRoot(document.getElementById("modals"));
-  }, []);
+  const closed = () => {
+    setVisible(false);
+    setTimeout(onClose, 300);
+  };
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") closed();
     };
 
     document.addEventListener("keydown", handleEsc);
     return () => {
       document.removeEventListener("keydown", handleEsc);
     };
-  }, [onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onClose, setVisible]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    const body = document.body;
+    const modals = document.getElementById("modals");
+    setModalRoot(modals);
+    return () => {
+      body.dataset.scrollLocked = "0";
+      body.classList.remove("open");
+    };
+  }, []);
 
   return (
     isOpen &&
     ReactDOM.createPortal(
-      <ModalUI title={title} onClose={onClose}>
+      <ModalUI title={title} onClose={closed} visible={isVisible}>
         {children}
       </ModalUI>,
-      modalRoot as HTMLDivElement
+      modalRoot!
     )
   );
 };

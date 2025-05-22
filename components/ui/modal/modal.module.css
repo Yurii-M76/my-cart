@@ -1,5 +1,9 @@
 .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   z-index: 99;
+  visibility: hidden;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -9,9 +13,17 @@
     1.25rem
   ); /* min: 14px, max: 20px */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
   color: var(--text-color-dark);
   font-size: var(--font-size-md);
   background-color: var(--bg-color-white);
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transform: translate(-50%, -50%);
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
 }
 
 .head {
