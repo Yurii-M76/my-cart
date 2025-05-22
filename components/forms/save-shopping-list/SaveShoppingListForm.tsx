@@ -7,7 +7,7 @@ type TInitialState = {
   listName: string;
 };
 
-const SaveShoppingListForm = ({ onCancel }: { onCancel: () => void }) => {
+const SaveShoppingListForm = () => {
   const initialValues: TInitialState = {
     listName: "",
   };
@@ -35,13 +35,6 @@ const SaveShoppingListForm = ({ onCancel }: { onCancel: () => void }) => {
       />
 
       <div className="formButtons right">
-        <ButtonUI
-          type="button"
-          label="Отменить"
-          color="gray"
-          size="sm"
-          onClick={onCancel}
-        />
         <ButtonUI
           type="submit"
           label="Сохранить"
