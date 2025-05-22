@@ -1,7 +1,5 @@
 .modal {
   position: absolute;
-  top: 50%;
-  left: 50%;
   z-index: 99;
   visibility: hidden;
   display: flex;
@@ -18,7 +16,6 @@
   font-size: var(--font-size-md);
   background-color: var(--bg-color-white);
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  transform: translate(-50%, -50%);
 }
 
 .visible {
@@ -39,6 +36,18 @@
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
+}
+
+.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.top {
+  top: 60px;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 .sm,

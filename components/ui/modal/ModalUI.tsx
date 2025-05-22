@@ -1,22 +1,16 @@
-import { FC, memo, ReactNode } from "react";
+import { FC, memo } from "react";
 import { ModalOverlayUI } from "../modal-overlay";
 import { ActionIconUI } from "../action-icon";
 import { XIconUI } from "../icons";
+import { TModalUI } from "@/types";
 import classes from "./modal.module.css";
 
-type TModalUI = {
-  title: string;
-  size?: "sm" | "md" | "lg" | "fullScreen";
-  visible: boolean;
-  onClose: () => void;
-  children?: ReactNode;
-};
-
 const ModalUI: FC<TModalUI> = memo(
-  ({ title, children, onClose, size = "md", visible }) => {
+  ({ title, size = "md", position = "center", visible, onClose, children }) => {
     const modalClassNames = [
       classes.modal,
       classes[size],
+      size !== "fullScreen" ? classes[position] : classes.center,
       visible ? classes.visible : null,
     ]
       .filter(Boolean)
