@@ -1,16 +1,17 @@
 "use client";
-import { FC, ReactNode, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { ModalUI } from "../ui";
+import { TModal } from "@/types";
 
-type TModalProps = {
-  title: string;
-  isOpen: boolean;
-  onClose: () => void;
-  children?: ReactNode;
-};
-
-const Modal: FC<TModalProps> = ({ title, children, isOpen, onClose }) => {
+const Modal: FC<TModal> = ({
+  title,
+  children,
+  isOpen,
+  size,
+  position,
+  onClose,
+}) => {
   const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
   const [isVisible, setVisible] = useState(false);
 
@@ -52,7 +53,13 @@ const Modal: FC<TModalProps> = ({ title, children, isOpen, onClose }) => {
   return (
     isOpen &&
     ReactDOM.createPortal(
-      <ModalUI title={title} onClose={closed} visible={isVisible}>
+      <ModalUI
+        title={title}
+        position={position}
+        size={size}
+        visible={isVisible}
+        onClose={closed}
+      >
         {children}
       </ModalUI>,
       modalRoot!
