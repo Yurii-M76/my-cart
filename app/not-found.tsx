@@ -23,7 +23,9 @@ const NotFound = () => {
     <div className="section">
       <h2>Not Found</h2>
       <p>Не удалось найти запрошенный ресурс</p>
-      <Link href="/">Вернуться на домашнюю страницу</Link>
+      <Link href="/">
+        <strong>Вернуться на домашнюю страницу</strong>
+      </Link>
 
       {countdown > 0 && (
         <p style={{ color: "var(--dimmed)" }}>
