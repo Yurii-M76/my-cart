@@ -42,7 +42,7 @@ const Catalog = () => {
         onClose={() => setModalSaveFormIsOpen(false)}
       >
         <h4>Сумма: {totalPrice.toLocaleString()} ₽</h4>
-        <SaveShoppingListForm onCancel={() => setModalSaveFormIsOpen(false)} />
+        <SaveShoppingListForm />
       </Modal>
 
       <Modal
