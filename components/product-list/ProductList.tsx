@@ -8,9 +8,11 @@ import { TProduct, TProductSelected } from "@/types";
 const ProductList = ({
   items,
   selectedItems,
+  onOpenModal,
 }: {
   items: TProduct[];
   selectedItems: TProductSelected[];
+  onOpenModal: () => void;
 }) => {
   const dispath = useDispatch();
   const [selectedList, setSelectedList] =
@@ -30,11 +32,14 @@ const ProductList = ({
   }, [dispath, selectedList]);
 
   return (
-    <ProductListUI
-      items={items}
-      selectedItems={selectedItems}
-      selectHandler={setList}
-    />
+    <>
+      <ProductListUI
+        items={items}
+        selectedItems={selectedItems}
+        onProductSelect={setList}
+        onClickItem={onOpenModal}
+      />
+    </>
   );
 };
 
