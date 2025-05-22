@@ -40,6 +40,7 @@ const CatalogUI: FC<TCatalog> = ({
             outline
             disabled={!selectedLength}
             onClick={onSave}
+            shadow
           >
             <CartIconUI width={24} height={24} />
           </ActionIconUI>

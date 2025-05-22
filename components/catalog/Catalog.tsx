@@ -15,8 +15,9 @@ const Catalog = () => {
   const products = useSelector(getProducts);
   const isLoading = useSelector(loading);
   const selectedItems = useSelector(getSelectedProducts);
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const router = useRouter();
+  const [modalSaveFormIsOpen, setModalSaveFormIsOpen] = useState(false);
+  const [modalEditFormIsOpen, setModalEditFormIsOpen] = useState(false);
 
   const totalPrice = selectedItems.reduce((acc, item) => {
     const product = products.find((product) => product.id === item.id);
@@ -32,22 +33,34 @@ const Catalog = () => {
       totalItems={products.length}
       totalPrice={totalPrice.toLocaleString()}
       selectedLength={selectedItems.length}
-      onSave={() => setIsOpenModal(true)}
+      onSave={() => setModalSaveFormIsOpen(true)}
       onProductCreate={() => router.push("/catalog/new-product")}
     >
       <Modal
         title="Сохранить список покупок"
-        isOpen={isOpenModal}
-        onClose={() => setIsOpenModal(false)}
+        isOpen={modalSaveFormIsOpen}
+        onClose={() => setModalSaveFormIsOpen(false)}
       >
         <h4>Сумма: {totalPrice.toLocaleString()} ₽</h4>
-        <SaveShoppingListForm onCancel={() => setIsOpenModal(false)} />
+        <SaveShoppingListForm onCancel={() => setModalSaveFormIsOpen(false)} />
+      </Modal>
+
+      <Modal
+        title="Редактировать"
+        isOpen={modalEditFormIsOpen}
+        onClose={() => setModalEditFormIsOpen(false)}
+      >
+        content
       </Modal>
 
       {isLoading ? (
         <LoaderUI color="gray" />
       ) : (
-        <ProductList selectedItems={selectedItems} items={products} />
+        <ProductList
+          selectedItems={selectedItems}
+          items={products}
+          onOpenModal={() => setModalEditFormIsOpen(true)}
+        />
       )}
     </CatalogUI>
   );
