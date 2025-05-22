@@ -73,7 +73,7 @@ button:active {
 }
 
 button:disabled {
-  color: var(--dimmed);
+  color: #ffffff;
   transform: none;
   cursor: not-allowed;
 }
