@@ -38,7 +38,7 @@ const SaveShoppingListForm = () => {
         <ButtonUI
           type="submit"
           label="Сохранить"
-          color="blue"
+          color="light-blue"
           size="sm"
           disabled={!isDirty}
         />
