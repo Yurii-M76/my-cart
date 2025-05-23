@@ -5,3 +5,4 @@ export * from "./product";
 export * from "./icon";
 export * from "./marker";
 export * from "./modal";
+export * from "./button";

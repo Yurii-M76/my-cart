@@ -1,18 +1,7 @@
-import { CSSProperties, FC } from "react";
+import { FC } from "react";
 import { LoaderUI } from "../../loader";
+import { TButtonUI } from "@/types";
 import classes from "./button.module.css";
-
-type TButtonUI = {
-  type: "button" | "submit" | "reset";
-  label: string;
-  onClick?: () => void;
-  size?: "sm" | "md" | "lg" | "full";
-  color?: "carrot" | "light-blue" | "blue" | "gray";
-  variant?: "filled" | "outline" | "transparent";
-  disabled?: boolean;
-  isLoading?: boolean;
-  style?: CSSProperties | undefined;
-};
 
 const ButtonUI: FC<TButtonUI> = ({
   type,
