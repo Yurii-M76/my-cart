@@ -4,8 +4,8 @@ export type TProduct = {
   id: TProductId;
   label: string;
   price: number;
-  categoryId: string | null;
-  description: string | null;
+  categoryId: string | undefined;
+  description: string | undefined;
 };
 
 export type TProductSelected = { id: TProductId; count: number };
