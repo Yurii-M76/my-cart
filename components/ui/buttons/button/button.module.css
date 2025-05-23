@@ -46,6 +46,10 @@
   background-color: var(--color-blue);
 }
 
+.red {
+  background-color: var(--color-red);
+}
+
 .gray {
   background-color: var(--outline-color);
 }
@@ -54,7 +58,7 @@
   border: none;
 }
 
-.filled.blue, .filled.carrot {
+.filled.blue, .filled.carrot, .filled.red {
   color: #ffffff;
 }
 
@@ -78,6 +82,11 @@
   color: var(--color-blue);
 }
 
+.outline.red {
+  border-color: var(--color-red);
+  color: var(--color-red);
+}
+
 .outline.gray {
   border-color: var(--color-gray);
   color: var(--color-gray);
@@ -97,6 +106,10 @@
 
 .transparent.blue {
   color: var(--color-blue);
+}
+
+.transparent.red {
+  color: var(--color-red);
 }
 
 .transparent.gray {
