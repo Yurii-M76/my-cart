@@ -13,11 +13,11 @@
 }
 
 .welcomeText {
-  color: var(--text-color-gray);
+  color: var(--color-gray);
   font-weight: bold;
 }
 
 .userName {
-  color: var(--text-color-dark);
+  color: var(--color-dark);
   font-weight: bold;
 }

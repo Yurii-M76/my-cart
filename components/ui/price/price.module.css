@@ -7,7 +7,7 @@
   border: 1px solid var(--outline-color);
   border-radius: 8px;
   padding: 0 18px;
-  background-color: var(--bg-color-white);
+  background-color: var(--color-white);
   inline-size: 100%;
   block-size: 60px;
 }

@@ -13,7 +13,7 @@
 }
 
 .count__num {
-  color: var(--text-color-dark);
+  color: var(--color-dark);
   font-weight: bold;
   font-size: var(--font-size-md);
 }

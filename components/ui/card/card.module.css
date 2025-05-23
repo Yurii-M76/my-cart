@@ -8,7 +8,7 @@
   border: 1px solid var(--outline-color);
   border-radius: 16px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-  background-color: var(--bg-color-white);
+  background-color: var(--color-white);
   inline-size: inherit;
   block-size: clamp(6.875rem, 6.591rem + 1.42vw, 7.5rem);
 

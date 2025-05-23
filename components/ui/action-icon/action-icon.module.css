@@ -7,7 +7,7 @@
   gap: 4px;
   border: none;
   overflow: hidden;
-  color: var(--text-color-dark);
+  color: var(--color-dark);
 }
 
 .sm {
@@ -51,11 +51,11 @@
 }
 
 .white {
-  background-color: var(--bg-color-white);
+  background-color: var(--color-white);
 }
 
 .dark {
-  background-color: var(--text-color-dark);
+  background-color: var(--color-dark);
 }
 
 .light-blue {

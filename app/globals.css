@@ -1,16 +1,15 @@
 :root {
   --app-bg-color: #f8fbff;
-  --bg-color-white: #ffffff;
-  --text-color-light: #f8fbff;
-  --text-color-dark: #183b56;
-  --text-color-gray: #5a7184;
+  --color-white: #ffffff;
   --accent-color: #f7931a;
-  --outline-color: #e5eaf4;
+  --color-dark: #183b56;
+  --color-gray: #5a7184;
   --color-light-blue: #d5e5fc;
   --color-blue: #1565d8;
   --color-green: #36b37e;
   --color-carrot: #f36223;
   --color-red: #e74c3c;
+  --outline-color: #e5eaf4;
   --dimmed: #b3bac5;
   --spacing-10: clamp(0.625rem, calc(0.341rem + 1.42vw), 1.25rem); /* min: 10px, max: 20px */
   --spacing-20: clamp(1.25rem, calc(0.966rem + 1.42vw), 1.875rem); /* min: 20px, max: 30px */
@@ -30,7 +29,7 @@ body {
 
 body {
   height: 100vh;
-  color: var(--text-color-dark);
+  color: var(--color-dark);
   font-family: var(--font-manrope-sans);
   font-size: var(--font-size-md);
   line-height: normal;

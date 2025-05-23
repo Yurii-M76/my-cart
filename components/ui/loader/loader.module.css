@@ -37,9 +37,9 @@
 }
 
 .gray {
-  border-top-color: var(--text-color-gray);
-  border-right-color: var(--text-color-gray);
-  border-bottom-color: var(--text-color-gray);
+  border-top-color: var(--color-gray);
+  border-right-color: var(--color-gray);
+  border-bottom-color: var(--color-gray);
 }
 
 @keyframes rotate {

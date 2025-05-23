@@ -6,10 +6,10 @@
 .input, .textarea {
   border: 1px solid var(--outline-color);
   border-radius: 8px;
-  color: var(--text-color-dark);
+  color: var(--color-dark);
   font-family: var(--font-manrope-sans);
   font-size: var(--font-size-md);
-  background-color: var(--bg-color-white);
+  background-color: var(--color-white);
   block-size: 40px;
   inline-size: inherit;
 
@@ -40,7 +40,7 @@
 }
 
 .label {
-  color: var(--text-color-gray);
+  color: var(--color-gray);
   font-weight: 600;
   font-size: var(--font-size-sm);
 }

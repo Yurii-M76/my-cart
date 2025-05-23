@@ -13,7 +13,7 @@
   border-radius: 24px;
   padding: 0 12px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-  background-color: var(--bg-color-white);
+  background-color: var(--color-white);
   inline-size: fit-content;
   block-size: 40px;
 }
@@ -42,7 +42,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: var(--text-color-dark);
+  color: var(--color-dark);
   font-weight: bold;
   line-height: 0.8;
   inline-size: 28px;

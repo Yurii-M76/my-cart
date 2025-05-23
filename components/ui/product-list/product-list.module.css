@@ -12,7 +12,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
-  border-bottom: 2px solid var(--bg-color-white);
+  border-bottom: 2px solid var(--color-white);
   padding-bottom: 8px;
   inline-size: 100%;
 }
