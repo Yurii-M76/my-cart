@@ -4,7 +4,6 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  border: none;
   border-radius: 8px;
   padding: 0px 20px;
   overflow: hidden;
@@ -39,10 +38,67 @@
   background-color: var(--color-carrot);
 }
 
-.blue {
+.light-blue {
   background-color: var(--color-light-blue);
+}
+
+.blue {
+  background-color: var(--color-blue);
 }
 
 .gray {
   background-color: var(--outline-color);
+}
+
+.filled, .transparent {
+  border: none;
+}
+
+.filled.blue, .filled.carrot {
+  color: #ffffff;
+}
+
+.outline {
+  background-color: #ffffff;
+  border: 1px solid;
+}
+
+.outline.carrot {
+  border-color: var(--color-carrot);
+  color: var(--color-carrot);
+}
+
+.outline.light-blue {
+  border-color: var(--color-light-blue);
+  color: var(--color-light-blue);
+}
+
+.outline.blue {
+  border-color: var(--color-blue);
+  color: var(--color-blue);
+}
+
+.outline.gray {
+  border-color: var(--text-color-gray);
+  color: var(--text-color-gray);
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.transparent.carrot {
+  color: var(--color-carrot);
+}
+
+.transparent.light-blue {
+  color: var(--color-light-blue);
+}
+
+.transparent.blue {
+  color: var(--color-blue);
+}
+
+.transparent.gray {
+  color: var(--text-color-gray);
 }
