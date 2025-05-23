@@ -64,15 +64,15 @@
 
 @media(min-width: 769px) {
   .sm {
-    inline-size: clamp(18.75rem, calc(18.182rem + 2.841vw), 20rem); /* min: 320px, max: 300px */;
+    max-inline-size: clamp(18.75rem, calc(18.182rem + 2.841vw), 20rem); /* min: 320px, max: 300px */;
   }
 
   .md {
-    inline-size: clamp(20rem, calc(17.727rem + 11.364vw), 25rem); /* min: 320px, max: 400px */;
+    max-inline-size: clamp(20rem, calc(17.727rem + 11.364vw), 25rem); /* min: 320px, max: 400px */;
   }
 
   .lg {
-    inline-size: clamp(20rem, calc(12.045rem + 39.773vw), 37.5rem); /* min: 320px, max: 600px */
+    max-inline-size: clamp(20rem, calc(12.045rem + 39.773vw), 37.5rem); /* min: 320px, max: 600px */
   }
 
   .full {
