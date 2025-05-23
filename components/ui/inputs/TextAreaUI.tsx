@@ -1,14 +1,6 @@
-import { CSSProperties, FC } from "react";
+import { FC } from "react";
+import { TTextAreaUI } from "@/types";
 import classes from "./inputs.module.css";
-
-type TTextAreaUI = {
-  name: string;
-  label: string;
-  variant?: "row" | "column";
-  size?: "sm" | "md" | "lg" | "full";
-  error?: string | undefined;
-  style?: CSSProperties | undefined;
-};
 
 const TextAreaUI: FC<TTextAreaUI> = ({
   name,
@@ -37,9 +29,11 @@ const TextAreaUI: FC<TTextAreaUI> = ({
 
   return (
     <div className={classNamesInputWrapper} style={style}>
-      <label htmlFor={name} className={classes.label}>
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={name} className={classes.label}>
+          {label}
+        </label>
+      )}
       <textarea
         id={name}
         key={name}

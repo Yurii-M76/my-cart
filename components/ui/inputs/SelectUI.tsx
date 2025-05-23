@@ -1,18 +1,6 @@
-import { CSSProperties, FC, SyntheticEvent } from "react";
+import { FC } from "react";
+import { TSelectUI } from "@/types";
 import classes from "./inputs.module.css";
-
-type TSelectData = { label: string; value: string };
-
-type TSelectUI = {
-  name: string;
-  label: string;
-  data: TSelectData[];
-  onChange: (event: SyntheticEvent<HTMLSelectElement, Event>) => void;
-  variant?: "row" | "column";
-  size?: "sm" | "md" | "lg" | "full";
-  error?: string | undefined;
-  style?: CSSProperties | undefined;
-};
 
 const SelectUI: FC<TSelectUI> = ({
   name,

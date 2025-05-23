@@ -1,20 +1,12 @@
-import { CSSProperties, FC } from "react";
+import { FC } from "react";
+import { TInputUI } from "@/types";
 import classes from "./inputs.module.css";
-
-type TInputUI = {
-  type: "text" | "number";
-  name: string;
-  label: string;
-  variant?: "row" | "column";
-  size?: "sm" | "md" | "lg" | "full";
-  error?: string | undefined;
-  style?: CSSProperties | undefined;
-};
 
 const InputUI: FC<TInputUI> = ({
   type,
   name,
   label,
+  placeholder,
   variant,
   size,
   error,
@@ -39,9 +31,11 @@ const InputUI: FC<TInputUI> = ({
 
   return (
     <div className={classNamesInputWrapper} style={style}>
-      <label htmlFor={name} className={classes.label}>
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={name} className={classes.label}>
+          {label}
+        </label>
+      )}
       {type === "text" ? (
         <>
           <input
@@ -49,6 +43,7 @@ const InputUI: FC<TInputUI> = ({
             id={name}
             key={name}
             name={name}
+            placeholder={placeholder}
             className={classNamesInput}
             {...props}
           />
@@ -64,6 +59,7 @@ const InputUI: FC<TInputUI> = ({
             min={0}
             step={1}
             pattern="[0-9]+([.][0-9]+)?"
+            placeholder={placeholder}
             className={classNamesInput}
             {...props}
           />
