@@ -27,7 +27,9 @@ const ModalUI: FC<TModalUI> = memo(
               variant="box-br-12"
               style={{ padding: 0, width: "24px", height: "24px" }}
             >
-              <XIconUI />
+              <div className="rotation">
+                <XIconUI />
+              </div>
             </ActionIconUI>
           </div>
           <div className={classes.content}>{children}</div>
