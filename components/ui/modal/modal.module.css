@@ -5,12 +5,8 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: clamp(
-    0.875rem,
-    calc(0.705rem + 0.852vw),
-    1.25rem
-  ); /* min: 14px, max: 20px */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: clamp(0.875rem, calc(0.705rem + 0.852vw), 1.25rem); /* min: 14px, max: 20px */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   opacity: 0;
   color: var(--color-dark);
   font-size: var(--font-size-md);
@@ -50,39 +46,21 @@
   transform: translate(-50%, 0%);
 }
 
-.sm,
-.md,
-.lg {
-  border-radius: clamp(
-    0.75rem,
-    calc(0.636rem + 0.568vw),
-    1rem
-  ); /* min: 12px, max: 16px */
+.sm, .md, .lg {
+  border-radius: clamp(0.75rem, calc(0.636rem + 0.568vw), 1rem); /* min: 12px, max: 16px */
   max-block-size: 80%;
 }
 
 .sm {
-  inline-size: clamp(
-    20rem,
-    calc(17.727rem + 11.364vw),
-    25rem
-  ); /* min: 320px, max: 400px */
+  inline-size: clamp(20rem, calc(17.727rem + 11.364vw), 25rem); /* min: 320px, max: 400px */
 }
 
 .md {
-  inline-size: clamp(
-    20rem,
-    calc(12.045rem + 39.773vw),
-    37.5rem
-  ); /* min: 320px, max: 600px */
+  inline-size: clamp(20rem, calc(12.045rem + 39.773vw), 37.5rem); /* min: 320px, max: 600px */
 }
 
 .lg {
-  inline-size: clamp(
-    20rem,
-    calc(6.364rem + 68.182vw),
-    50rem
-  ); /* min: 320px, max: 800px */
+  inline-size: clamp(20rem, calc(6.364rem + 68.182vw), 50rem); /* min: 320px, max: 800px */
 }
 
 .fullScreen {
