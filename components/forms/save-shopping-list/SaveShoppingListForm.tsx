@@ -27,7 +27,7 @@ const SaveShoppingListForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} onReset={() => reset()}>
       <InputUI
         type="text"
-        label="Название списка"
+        placeholder="Название списка"
         size="full"
         key={"productName"}
         {...register("listName", { required: exceptions.form.required })}
