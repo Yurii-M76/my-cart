@@ -24,25 +24,26 @@ model User {
 }
 
 model Products {
-  id            String      @id @default(cuid())
-  label         String
-  price         Float
-  description   String?
-  category      ProductCategory?    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  categoryId    String?
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+  id                String              @id @default(cuid())
+  label             String
+  price             Float
+  description       String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
 
+  categoriesIds     ProductCategory[]   @relation("ProductToCategories")
+  
   @@map("products")
 }
 
 model ProductCategory {
-  id            String      @id @default(cuid())
+  id            String        @id @default(cuid())
   label         String
   description   String?
-  products      Products[]
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  productsIds   Products[]    @relation("ProductToCategories")
 
   @@map("product-categories")
 }
