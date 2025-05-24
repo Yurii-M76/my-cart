@@ -2,15 +2,26 @@
   --app-bg-color: #f8fbff;
   --color-white: #ffffff;
   --accent-color: #f7931a;
+  --accent-color-hover: #f9b45f;
   --color-dark: #183b56;
+  --color-dark-hover: #1a415e;
   --color-gray: #5a7184;
-  --color-light-blue: #d5e5fc;
+  --color-gray-hover: #5e768a;
+  --color-light-gray: #e5eaf4;
+  --color-light-gray-hover: #ecf0f7;
   --color-blue: #1565d8;
+  --color-blue-hover: #196fe9;
+  --color-light-blue: #d5e5fc;
+  --color-light-blue-hover: #dfebfd;
   --color-green: #36b37e;
+  --color-green-hover: #38bb85;
   --color-carrot: #f36223;
+  --color-carrot-hover: #f57640;
   --color-red: #e74c3c;
-  --outline-color: #e5eaf4;
+  --color-red-hover: #ea6657;
+
   --dimmed: #b3bac5;
+  --dimmed-hover: #b9bfc9;
   --spacing-10: clamp(0.625rem, calc(0.341rem + 1.42vw), 1.25rem); /* min: 10px, max: 20px */
   --spacing-20: clamp(1.25rem, calc(0.966rem + 1.42vw), 1.875rem); /* min: 20px, max: 30px */
   --font-size-xs: clamp(0.75rem, calc(0.693rem + 0.284vw), 0.875rem); /* min: 12px, max: 14px */
@@ -49,7 +60,7 @@ main {
 }
 
 a {
-  color: inherit;
+  color: var(--color-blue);
   text-decoration: none;
 }
 
