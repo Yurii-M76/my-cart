@@ -1,0 +1,25 @@
+.saveShoppingList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.totalPrice span {
+  font-size: var(--font-size-md);
+}
+
+.totalPrice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-xl);
+}
