@@ -36,22 +36,42 @@
 .carrot {
   color: #ffffff;
   background-color: var(--color-carrot);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-carrot-hover);
+  }
 }
 
 .light-blue {
   background-color: var(--color-light-blue);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-light-blue-hover);
+  }
 }
 
 .blue {
   background-color: var(--color-blue);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-blue-hover);
+  }
 }
 
 .red {
   background-color: var(--color-red);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-red-hover);
+  }
 }
 
 .gray {
-  background-color: var(--outline-color);
+  background-color: var(--color-light-gray);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-light-gray-hover);
+  }
 }
 
 .filled, .transparent {
@@ -65,35 +85,68 @@
 .outline {
   background-color: #ffffff;
   border: 1px solid;
+
+  &:hover:not(:disabled) {
+    background-color: transparent;
+  }
 }
 
 .outline.carrot {
   border-color: var(--color-carrot);
   color: var(--color-carrot);
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-carrot-hover);
+    color: var(--color-carrot-hover);
+  }
 }
 
 .outline.light-blue {
   border-color: var(--color-light-blue);
   color: var(--color-light-blue);
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-light-blue-hover);
+    color: var(--color-light-blue-hover);
+  }
 }
 
 .outline.blue {
   border-color: var(--color-blue);
   color: var(--color-blue);
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-blue-hover);
+    color: var(--color-blue-hover);
+  }
 }
 
 .outline.red {
   border-color: var(--color-red);
   color: var(--color-red);
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-red-hover);
+    color: var(--color-red-hover);
+  }
 }
 
 .outline.gray {
   border-color: var(--color-gray);
   color: var(--color-gray);
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-gray-hover);
+    color: var(--color-gray-hover);
+  }
 }
 
 .transparent {
   background-color: transparent;
+
+  &:hover:not(:disabled) {
+    background-color: transparent;
+  }
 }
 
 .transparent.carrot {
