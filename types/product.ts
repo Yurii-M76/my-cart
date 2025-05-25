@@ -1,10 +1,12 @@
+import { TProductCategories } from "./product-categories";
+
 type TProductId = string;
 
 export type TProduct = {
   id: TProductId;
   label: string;
   price: number;
-  categoryId?: string;
+  category: TProductCategories;
   description?: string;
 };
 
