@@ -64,6 +64,7 @@ const SaveProductForm: FC<TSaveProductForm> = ({ updData }) => {
     if (updData) {
       setValue("productName", updData.label);
       setValue("description", updData.description ?? "");
+      setValue("categorуId", updData.category.id ?? "");
       setValue("price", updData.price);
     }
   }, [setValue, updData]);
@@ -102,7 +103,7 @@ const SaveProductForm: FC<TSaveProductForm> = ({ updData }) => {
           label: item.label,
         }))}
         size="lg"
-        key={"category"}
+        key={"categorуId"}
         {...register("categorуId", { required: exceptions.form.required })}
         error={errors.categorуId?.message}
       />
