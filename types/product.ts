@@ -10,6 +10,10 @@ export type TProduct = {
   description?: string;
 };
 
+export type TSaveProduct = Omit<TProduct, "id" | "category"> & {
+  categoryId: string;
+};
+
 export type TProductSelected = { id: TProductId; count: number };
 
 export type TProductSelection = {
