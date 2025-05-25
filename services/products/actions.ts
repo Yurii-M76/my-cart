@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getDataFromApi, postDataFromApi } from "@/utils/api";
-import { TProduct } from "@/types";
+import { TProduct, TSaveProduct } from "@/types";
 
 export const findProducts = createAsyncThunk(
   "products/findAll",
@@ -9,6 +9,6 @@ export const findProducts = createAsyncThunk(
 
 export const createProduct = createAsyncThunk(
   "products/create",
-  async (data: Partial<TProduct>) =>
-    await postDataFromApi<TProduct>("products", data)
+  async (data: TSaveProduct) =>
+    await postDataFromApi<TSaveProduct>("products", data)
 );
