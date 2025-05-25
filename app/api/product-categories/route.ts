@@ -7,9 +7,15 @@ const prisma = new PrismaClient();
 export async function GET() {
   try {
     const response = await prisma.productCategory.findMany({
-      omit: {
-        createdAt: true,
-        updatedAt: true,
+      select: {
+        id: true,
+        label: true,
+        products: {
+          select: {
+            id: true,
+            label: true,
+          },
+        },
       },
     });
     return NextResponse.json(response);
@@ -26,10 +32,15 @@ export async function POST(req: Request) {
       data: {
         label: body.label,
         description: body.description,
+      },
+      select: {
+        id: true,
+        label: true,
         products: {
-          connect: body.products?.map((product) => ({
-            id: product.id,
-          })),
+          select: {
+            id: true,
+            label: true,
+          },
         },
       },
     });
