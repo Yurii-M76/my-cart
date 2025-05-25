@@ -32,10 +32,7 @@ const ProductListUI: FC<TProductListUI> = ({
               </div>
               <div className={classes.property}>
                 <span className={classes.price}>{item.price} ₽</span>
-                <span className={classes.category}>
-                  {" "}
-                  / {item.categoryId || "без категории"}
-                </span>
+                <span className={classes.category}> • {item.category.label}</span>
               </div>
             </div>
           </div>
