@@ -1,15 +1,22 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/generated/prisma";
-import { TProduct } from "@/types";
 
 const prisma = new PrismaClient();
 
 export async function GET() {
   try {
     const response = await prisma.products.findMany({
-      omit: {
-        createdAt: true,
-        updatedAt: true,
+      select: {
+        id: true,
+        label: true,
+        description: true,
+        price: true,
+        category: {
+          select: {
+            id: true,
+            label: true,
+          },
+        },
       },
     });
     return NextResponse.json(response);
@@ -21,13 +28,29 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
-    const body = (await req.json()) as TProduct;
+    const body = await req.json();
     const response = await prisma.products.create({
       data: {
         label: body.label,
         description: body.description,
-        categoryId: body.categoryId,
+        category: {
+          connect: {
+            id: body.categoryId,
+          },
+        },
         price: body.price,
+      },
+      select: {
+        id: true,
+        label: true,
+        description: true,
+        price: true,
+        category: {
+          select: {
+            id: true,
+            label: true,
+          },
+        },
       },
     });
     return NextResponse.json(response);
