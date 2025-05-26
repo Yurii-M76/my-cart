@@ -10,5 +10,5 @@ export const findProducts = createAsyncThunk(
 export const createProduct = createAsyncThunk(
   "products/create",
   async (data: TSaveProduct) =>
-    await postDataFromApi<TSaveProduct>("products", data)
+    await postDataFromApi<TProduct>("products", data)
 );
