@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "@/services/store";
 import { createProduct, updateProduct } from "@/services/products/actions";
 import { loading } from "@/services/products/productsSlice";
 import { ButtonUI, InputUI, SelectUI, TextAreaUI } from "@/components/ui";
-import { exceptions } from "@/constants";
+import { validateCategory, validateLabel, validatePrice } from "./validation";
 import {
   TProduct,
   TProductCategories,
@@ -22,12 +22,14 @@ type TInitialState = {
 
 type TSaveProductForm = {
   categories: TProductCategories[];
+  products?: TProduct[];
   updData?: TProduct;
   errorMessage?: string | null | undefined;
 };
 
 const SaveProductForm: FC<TSaveProductForm> = ({
   categories,
+  products,
   updData,
   errorMessage,
 }) => {
@@ -41,12 +43,21 @@ const SaveProductForm: FC<TSaveProductForm> = ({
     price: updData?.price ?? 0,
   };
 
-  const { register, getValues, formState, reset, handleSubmit } =
+  const { register, getValues, formState, reset, handleSubmit, watch } =
     useForm<TInitialState>({
       defaultValues: initialValues,
     });
 
   const { isDirty, errors } = formState;
+
+  const checkIsConflictLabel = (): boolean => {
+    const productName = watch().productName;
+    return productName.length >= 3 &&
+      products &&
+      products.some((item) => item.label === productName)
+      ? true
+      : false;
+  };
 
   const onSaveHandler = () => {
     const newProduct: TSaveProduct = {
@@ -79,13 +90,16 @@ const SaveProductForm: FC<TSaveProductForm> = ({
     <form
       onSubmit={handleSubmit(updData ? onUpdateHandler : onSaveHandler)}
       onReset={() => reset()}
+      noValidate
     >
       <InputUI
         type="text"
         label="Наименование"
         size="lg"
         key={"productName"}
-        {...register("productName", { required: exceptions.form.required })}
+        {...register("productName", {
+          validate: (value) => validateLabel(value, checkIsConflictLabel),
+        })}
         error={errors.productName?.message}
       />
       <TextAreaUI
@@ -102,7 +116,9 @@ const SaveProductForm: FC<TSaveProductForm> = ({
         }))}
         size="lg"
         key={"categorуId"}
-        {...register("categorуId", { required: exceptions.form.required })}
+        {...register("categorуId", {
+          validate: (value) => validateCategory(value),
+        })}
         error={errors.categorуId?.message}
       />
       <InputUI
@@ -110,7 +126,9 @@ const SaveProductForm: FC<TSaveProductForm> = ({
         label="Стоимость за единицу"
         size="lg"
         key={"price"}
-        {...register("price", { required: exceptions.form.required })}
+        {...register("price", {
+          validate: (value) => validatePrice(value),
+        })}
         error={errors.price?.message}
       />
 
