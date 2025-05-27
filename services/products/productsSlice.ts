@@ -4,12 +4,14 @@ import { TProduct } from "@/types";
 
 type TInitialState = {
   loading: boolean;
+  success: boolean;
   products: TProduct[];
   error?: string | null;
 };
 
 const initialState: TInitialState = {
   loading: false,
+  success: false,
   error: null,
   products: [],
 };
@@ -17,11 +19,16 @@ const initialState: TInitialState = {
 export const productsSlice = createSlice({
   name: "productsSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    resetErrors: (state) => {
+      state.error = null;
+    },
+  },
   selectors: {
     getProducts: (state) => state.products,
     getErrors: (state) => state.error,
     loading: (state) => state.loading,
+    success: (state) => state.success,
   },
   extraReducers(builder) {
     builder
@@ -45,15 +52,18 @@ export const productsSlice = createSlice({
       .addCase(createProduct.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.success = false;
       })
       .addCase(createProduct.fulfilled, (state, action) => {
         state.loading = false;
         state.products = [...state.products, action.payload];
         state.error = null;
+        state.success = true;
       })
       .addCase(createProduct.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+        state.success = false;
       });
 
     builder
@@ -79,6 +89,7 @@ export const productsSlice = createSlice({
   },
 });
 
-export const {} = productsSlice.actions;
-export const { getProducts, getErrors, loading } = productsSlice.selectors;
+export const { resetErrors } = productsSlice.actions;
+export const { getProducts, getErrors, loading, success } =
+  productsSlice.selectors;
 export default productsSlice;
