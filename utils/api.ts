@@ -36,3 +36,22 @@ export const postDataFromApi = async <T>(
     return Promise.reject(error);
   }
 };
+
+export const updateDataFromApi = async <T>(
+  path: string,
+  data: Partial<T>
+): Promise<T> => {
+  try {
+    const response = await fetch(`${URL}/${path}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      } as HeadersInit,
+      body: JSON.stringify(data),
+    });
+    return await checkResponse<T>(response);
+  } catch (error) {
+    console.error(`Request failed (${path} update):`, error);
+    return Promise.reject(error);
+  }
+};
