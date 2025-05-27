@@ -23,9 +23,14 @@ type TInitialState = {
 type TSaveProductForm = {
   categories: TProductCategories[];
   updData?: TProduct;
+  errorMessage?: string | null | undefined;
 };
 
-const SaveProductForm: FC<TSaveProductForm> = ({ categories, updData }) => {
+const SaveProductForm: FC<TSaveProductForm> = ({
+  categories,
+  updData,
+  errorMessage,
+}) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(loading);
 
@@ -109,7 +114,9 @@ const SaveProductForm: FC<TSaveProductForm> = ({ categories, updData }) => {
         error={errors.price?.message}
       />
 
-      <div className={`formButtons ${updData && "right"}`}>
+      {errorMessage && <span className="error">{errorMessage}</span>}
+
+      <div className={"formButtons right"}>
         {updData && (
           <ButtonUI
             type="button"
