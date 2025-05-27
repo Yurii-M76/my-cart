@@ -1,5 +1,5 @@
 "use client";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "@/services/store";
 import { setSelectedProducts } from "@/services/selectedProductsSlice";
 import { ProductListUI } from "../ui";
@@ -8,11 +8,11 @@ import { TProduct, TProductSelected } from "@/types";
 const ProductList = ({
   items,
   selectedItems,
-  setProductIdToEdit,
+  onClickItem,
 }: {
   items: TProduct[];
   selectedItems: TProductSelected[];
-  setProductIdToEdit: Dispatch<SetStateAction<string | undefined>>;
+  onClickItem: (id: string) => void;
 }) => {
   const dispath = useDispatch();
   const [selectedList, setSelectedList] =
@@ -37,7 +37,7 @@ const ProductList = ({
         items={items}
         selectedItems={selectedItems}
         onProductSelect={setList}
-        onClickItem={setProductIdToEdit}
+        onClickItem={onClickItem}
       />
     </>
   );
