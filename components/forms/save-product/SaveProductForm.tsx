@@ -1,15 +1,17 @@
 "use client";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "@/services/store";
-import { createProduct } from "@/services/products/actions";
+import { createProduct, updateProduct } from "@/services/products/actions";
 import { loading } from "@/services/products/productsSlice";
-import { findProductCategories } from "@/services/product-categories/actions";
-import { getProductCategories } from "@/services/product-categories/productCategoriesSlice";
 import { ButtonUI, InputUI, SelectUI, TextAreaUI } from "@/components/ui";
 import { exceptions } from "@/constants";
-import { TProduct } from "@/types";
+import {
+  TProduct,
+  TProductCategories,
+  TProductUpdate,
+  TSaveProduct,
+} from "@/types";
 
 type TInitialState = {
   productName: string;
@@ -19,63 +21,54 @@ type TInitialState = {
 };
 
 type TSaveProductForm = {
+  categories: TProductCategories[];
   updData?: TProduct;
 };
 
-const SaveProductForm: FC<TSaveProductForm> = ({ updData }) => {
+const SaveProductForm: FC<TSaveProductForm> = ({ categories, updData }) => {
   const dispatch = useDispatch();
-  const router = useRouter();
   const isLoading = useSelector(loading);
-  const categories = useSelector(getProductCategories);
 
   const initialValues: TInitialState = {
-    productName: "",
-    description: "",
-    categorуId: "",
-    price: 0,
+    productName: updData?.label ?? "",
+    description: updData?.description ?? "",
+    categorуId: updData?.category.id ?? "",
+    price: updData?.price ?? 0,
   };
 
-  const { register, getValues, setValue, formState, reset, handleSubmit } =
+  const { register, getValues, formState, reset, handleSubmit } =
     useForm<TInitialState>({
       defaultValues: initialValues,
     });
 
-  const { isDirty, errors, isSubmitSuccessful } = formState;
+  const { isDirty, errors } = formState;
 
   const onSaveHandler = () => {
-    const newProduct = {
-      label: getValues("productName"),
-      description: getValues("description"),
-      categoryId: getValues("categorуId"),
-      price: +getValues("price"),
+    const newProduct: TSaveProduct = {
+      label: getValues().productName,
+      description: getValues().description,
+      categoryId: getValues().categorуId,
+      price: +getValues().price,
     };
-
     dispatch(createProduct(newProduct));
   };
 
   const onUpdateHandler = () => {
-    console.log("update");
+    if (updData) {
+      const productUpdate: TProductUpdate = {
+        id: updData.id,
+        label: getValues().productName,
+        description: getValues().description,
+        categoryId: getValues().categorуId,
+        price: +getValues().price,
+      };
+      dispatch(updateProduct(productUpdate));
+    }
   };
+
   const onDeleteHandler = () => {
     console.log("delete");
   };
-
-  useEffect(() => {
-    if (updData) {
-      setValue("productName", updData.label);
-      setValue("description", updData.description ?? "");
-      setValue("categorуId", updData.category.id ?? "");
-      setValue("price", updData.price);
-    }
-  }, [setValue, updData]);
-
-  useEffect(() => {
-    if (isSubmitSuccessful && !isLoading) router.push("/catalog");
-  }, [isLoading, isSubmitSuccessful, router]);
-
-  useEffect(() => {
-    dispatch(findProductCategories());
-  }, [dispatch]);
 
   return (
     <form
