@@ -33,10 +33,11 @@ const validateCategoryId = async (categoryId: string) => {
   return null;
 };
 
-const validateProductLabel = async (label: string) => {
+const validateProductLabel = async (id: string, label: string) => {
   const existingProduct = await prisma.products.findFirst({
     where: {
-      label: label,
+      label,
+      NOT: { id },
     },
   });
 
@@ -87,7 +88,7 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as Products;
-    const { label, description, price, categoryId } = body;
+    const { id, label, description, price, categoryId } = body;
 
     const validationError = validateProduct(body);
     if (validationError) {
@@ -103,7 +104,7 @@ export async function POST(req: Request) {
       });
     }
 
-    const labelError = await validateProductLabel(label);
+    const labelError = await validateProductLabel(id, label);
     if (labelError) {
       return NextResponse.json(labelError, { status: labelError.status });
     }
@@ -158,7 +159,7 @@ export async function PATCH(req: Request) {
       });
     }
 
-    const labelError = await validateProductLabel(label);
+    const labelError = await validateProductLabel(id, label);
     if (labelError) {
       return NextResponse.json(labelError, { status: labelError.status });
     }
