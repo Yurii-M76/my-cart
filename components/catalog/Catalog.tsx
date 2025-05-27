@@ -81,7 +81,7 @@ const Catalog = () => {
       </Modal>
 
       <Modal
-        title={showModalSaveProduct ? "Новый продукт" : "Редактировать"}
+        title={productIdToUpdate ? "Редактировать" : "Новый продукт"}
         isOpen={showModalSaveProduct}
         onClose={() => {
           setProductIdToUpdate(null);
@@ -90,6 +90,7 @@ const Catalog = () => {
         }}
       >
         <SaveProductForm
+          products={products}
           updData={productToUpdate}
           categories={productCategories}
           errorMessage={errors}
