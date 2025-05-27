@@ -11,7 +11,7 @@ const CatalogUI: FC<TCatalog> = ({
   selectedLength,
   children,
   onProductCreate,
-  onSave,
+  onSaveCart,
 }) => {
   return (
     <div className={classes.catalog}>
@@ -39,7 +39,7 @@ const CatalogUI: FC<TCatalog> = ({
             variant="box-br-8"
             outline
             disabled={!selectedLength}
-            onClick={onSave}
+            onClick={onSaveCart}
             shadow
             style={{ color: !selectedLength ? "var(--dimmed)" : undefined }}
           >
