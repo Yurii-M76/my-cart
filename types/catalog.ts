@@ -5,6 +5,6 @@ export type TCatalog = {
   totalPrice: string;
   selectedLength: number;
   onProductCreate: () => void;
-  onSave: () => void;
+  onSaveCart: () => void;
   children: ReactNode;
 };
