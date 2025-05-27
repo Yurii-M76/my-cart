@@ -4,7 +4,15 @@ export type TButtonUI = {
   type: "button" | "submit" | "reset";
   label: string;
   size?: "sm" | "md" | "lg" | "full";
-  color?: "carrot" | "light-blue" | "blue" | "red" | "gray";
+  color?:
+    | "dark"
+    | "gray"
+    | "light-gray"
+    | "blue"
+    | "light-blue"
+    | "green"
+    | "carrot"
+    | "red";
   variant?: "filled" | "outline" | "transparent";
   disabled?: boolean;
   isLoading?: boolean;
