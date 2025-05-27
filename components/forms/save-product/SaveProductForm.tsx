@@ -54,7 +54,9 @@ const SaveProductForm: FC<TSaveProductForm> = ({
     const productName = watch().productName;
     return productName.length >= 3 &&
       products &&
-      products.some((item) => item.label === productName)
+      products.some(
+        (item) => item.label === productName && item.id !== updData?.id
+      )
       ? true
       : false;
   };
