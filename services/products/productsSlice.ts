@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createProduct, findProducts } from "./actions";
+import { createProduct, findProducts, updateProduct } from "./actions";
 import { TProduct } from "@/types";
 
 type TInitialState = {
@@ -52,6 +52,27 @@ export const productsSlice = createSlice({
         state.error = null;
       })
       .addCase(createProduct.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+
+    builder
+      // update
+      .addCase(updateProduct.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        const index = state.products.findIndex(
+          (item) => item.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.products[index] = action.payload;
+        }
+        state.error = null;
+      })
+      .addCase(updateProduct.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
