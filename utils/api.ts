@@ -55,3 +55,22 @@ export const updateDataFromApi = async <T>(
     return Promise.reject(error);
   }
 };
+
+export const deleteDataFromApi = async <T>(
+  path: string,
+  id: string
+): Promise<T> => {
+  try {
+    const response = await fetch(`${URL}/${path}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      } as HeadersInit,
+      body: JSON.stringify({ id }),
+    });
+    return await checkResponse<T>(response);
+  } catch (error) {
+    console.error(`Request failed (delete ${path}):`, error);
+    return Promise.reject(error);
+  }
+};
