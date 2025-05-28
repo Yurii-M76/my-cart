@@ -3,7 +3,16 @@ import classes from "./loader.module.css";
 
 type TLoaderUI = {
   size?: "sm" | "md" | "lg";
-  color?: "gray" | "white" | "blue";
+  color?:
+    | "white"
+    | "dark"
+    | "gray"
+    | "light-gray"
+    | "blue"
+    | "light-blue"
+    | "green"
+    | "carrot"
+    | "red";
 };
 
 const LoaderUI: FC<TLoaderUI> = ({ size, color }) => {
