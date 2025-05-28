@@ -1,3 +1,4 @@
+export * from "./slice";
 export * from "./card";
 export * from "./page";
 export * from "./catalog";
