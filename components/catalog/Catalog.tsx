@@ -14,7 +14,7 @@ import { getProductCategories } from "@/services/product-categories/productCateg
 import { ProductList } from "../product-list";
 import { Modal } from "../modal";
 import { SaveProductForm, SaveShoppingListForm } from "../forms";
-import { CatalogUI, LoaderUI, SaveShoppingListUI } from "../ui";
+import { AlertUI, CatalogUI, LoaderUI, SaveShoppingListUI } from "../ui";
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -98,7 +98,16 @@ const Catalog = () => {
         />
       </Modal>
 
-      {status.get.loading ? (
+      {!products.length ? (
+        <AlertUI icon color="light-gray" variant="filled">
+          <p>
+            Нет данных -{" "}
+            <a href="#" onClick={() => setShowModalSaveProduct(true)}>
+              добавить
+            </a>
+          </p>
+        </AlertUI>
+      ) : status.get.loading ? (
         <LoaderUI color="gray" />
       ) : (
         <ProductList
