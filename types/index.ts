@@ -1,4 +1,5 @@
 export * from "./slice";
+export * from "./ui-scheme";
 export * from "./card";
 export * from "./page";
 export * from "./catalog";

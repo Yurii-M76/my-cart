@@ -1,20 +1,12 @@
 import { CSSProperties } from "react";
+import { TColorScheme, TSizeScheme, TVariantScheme } from "./ui-scheme";
 
 export type TButtonUI = {
   type: "button" | "submit" | "reset";
   label: string;
-  size?: "sm" | "md" | "lg" | "full";
-  color?:
-    | "white"
-    | "dark"
-    | "gray"
-    | "light-gray"
-    | "blue"
-    | "light-blue"
-    | "green"
-    | "carrot"
-    | "red";
-  variant?: "filled" | "outline" | "transparent";
+  size?: Exclude<TSizeScheme, "xl"> | "full";
+  color?: Exclude<TColorScheme, "white">;
+  variant?: TVariantScheme;
   disabled?: boolean;
   isLoading?: boolean;
   style?: CSSProperties | undefined;
