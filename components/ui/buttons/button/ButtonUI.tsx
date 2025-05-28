@@ -31,7 +31,11 @@ const ButtonUI: FC<TButtonUI> = ({
       className={classNames}
       style={style}
     >
-      {isLoading ? <LoaderUI /> : label}
+      {isLoading ? (
+        <LoaderUI color={!variant || variant === "filled" ? "white" : color} />
+      ) : (
+        label
+      )}
     </button>
   );
 };
