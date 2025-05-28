@@ -5,6 +5,7 @@ export type TButtonUI = {
   label: string;
   size?: "sm" | "md" | "lg" | "full";
   color?:
+    | "white"
     | "dark"
     | "gray"
     | "light-gray"
