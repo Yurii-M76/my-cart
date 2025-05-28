@@ -2,8 +2,12 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "@/services/store";
-import { createProduct, updateProduct } from "@/services/products/actions";
-import { loading } from "@/services/products/productsSlice";
+import {
+  createProduct,
+  deleteProduct,
+  updateProduct,
+} from "@/services/products/actions";
+import { getProductsStatus } from "@/services/products/productsSlice";
 import { ButtonUI, InputUI, SelectUI, TextAreaUI } from "@/components/ui";
 import { validateCategory, validateLabel, validatePrice } from "./validation";
 import {
@@ -34,7 +38,7 @@ const SaveProductForm: FC<TSaveProductForm> = ({
   errorMessage,
 }) => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(loading);
+  const status = useSelector(getProductsStatus);
 
   const initialValues: TInitialState = {
     productName: updData?.label ?? "",
@@ -85,7 +89,9 @@ const SaveProductForm: FC<TSaveProductForm> = ({
   };
 
   const onDeleteHandler = () => {
-    console.log("delete");
+    if (updData) {
+      dispatch(deleteProduct(updData?.id));
+    }
   };
 
   return (
@@ -143,24 +149,25 @@ const SaveProductForm: FC<TSaveProductForm> = ({
             label="Удалить"
             size="sm"
             color="red"
-            variant="transparent"
+            variant="outline"
             onClick={onDeleteHandler}
+            isLoading={status.delete.loading}
           />
         )}
         <ButtonUI
           type="reset"
           label="Очистить"
-          color="gray"
+          color="light-gray"
           size="sm"
           disabled={!isDirty}
         />
         <ButtonUI
           type="submit"
           label={updData ? "Обновить" : "Сохранить"}
-          color="light-blue"
+          color="dark"
           size="sm"
           disabled={!isDirty}
-          isLoading={isLoading}
+          isLoading={updData ? status.update.loading : status.create.loading}
         />
       </div>
     </form>
