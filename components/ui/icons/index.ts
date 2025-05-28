@@ -8,4 +8,5 @@ export { default as CheckIconUI } from "./CheckIcon";
 export { default as HistoryIconUI } from "./HistoryIcon";
 export { default as CatalogIconUI } from "./CatalogIcon";
 export { default as SettingsIconUI } from "./SettingsIcon";
+export { default as AlertIconUI } from "./AlertIcon";
 export { default as XIconUI } from "./XIcon";
