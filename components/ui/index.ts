@@ -17,3 +17,4 @@ export * from "./modal-overlay";
 export * from "./inputs";
 export * from "./loader";
 export * from "./save-shopping-list-form";
+export * from "./alert";
