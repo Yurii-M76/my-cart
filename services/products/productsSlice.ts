@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createProduct, findProducts, updateProduct } from "./actions";
+import {
+  createProduct,
+  deleteProduct,
+  findProducts,
+  updateProduct,
+} from "./actions";
 import { TProduct } from "@/types";
 
 type TInitialState = {
@@ -51,29 +56,31 @@ export const productsSlice = createSlice({
       // create
       .addCase(createProduct.pending, (state) => {
         state.loading = true;
-        state.error = null;
         state.success = false;
+        state.error = null;
       })
       .addCase(createProduct.fulfilled, (state, action) => {
         state.loading = false;
+        state.success = true;
         state.products = [...state.products, action.payload];
         state.error = null;
-        state.success = true;
       })
       .addCase(createProduct.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
         state.success = false;
+        state.error = action.error.message;
       });
 
     builder
       // update
       .addCase(updateProduct.pending, (state) => {
         state.loading = true;
+        state.success = false;
         state.error = null;
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
         state.loading = false;
+        state.success = true;
         const index = state.products.findIndex(
           (item) => item.id === action.payload.id
         );
@@ -84,6 +91,28 @@ export const productsSlice = createSlice({
       })
       .addCase(updateProduct.rejected, (state, action) => {
         state.loading = false;
+        state.success = false;
+        state.error = action.error.message;
+      });
+
+    builder
+      // delete
+      .addCase(deleteProduct.pending, (state) => {
+        state.loading = true;
+        state.success = false;
+        state.error = null;
+      })
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.products = state.products.filter(
+          (item) => item.id !== action.payload
+        );
+        state.error = null;
+      })
+      .addCase(deleteProduct.rejected, (state, action) => {
+        state.loading = false;
+        state.success = false;
         state.error = action.error.message;
       });
   },

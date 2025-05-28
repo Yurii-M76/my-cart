@@ -1,5 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getDataFromApi, postDataFromApi, updateDataFromApi } from "@/utils/api";
+import {
+  deleteDataFromApi,
+  getDataFromApi,
+  postDataFromApi,
+  updateDataFromApi,
+} from "@/utils/api";
 import { TProduct, TProductUpdate, TSaveProduct } from "@/types";
 
 export const findProducts = createAsyncThunk(
@@ -17,4 +22,9 @@ export const updateProduct = createAsyncThunk(
   "products/update",
   async (data: TProductUpdate) =>
     await updateDataFromApi<TProduct>("products", data)
+);
+
+export const deleteProduct = createAsyncThunk(
+  "products/delete",
+  async (id: string) => await deleteDataFromApi<string>("products", id)
 );
