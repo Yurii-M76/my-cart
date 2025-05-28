@@ -5,20 +5,50 @@ import {
   findProducts,
   updateProduct,
 } from "./actions";
-import { TProduct } from "@/types";
+import { TProduct, TStatusThunk } from "@/types";
 
 type TInitialState = {
-  loading: boolean;
-  success: boolean;
+  status: TStatusThunk;
   products: TProduct[];
-  error?: string | null;
+  error?: string;
 };
 
 const initialState: TInitialState = {
+  status: {
+    get: {
+      loading: false,
+      success: false,
+    },
+    create: {
+      loading: false,
+      success: false,
+    },
+    update: {
+      loading: false,
+      success: false,
+    },
+    delete: {
+      loading: false,
+      success: false,
+    },
+  },
+  products: [],
+  error: undefined,
+};
+
+const statusPending = {
+  loading: true,
+  success: false,
+};
+
+const statusFulfilled = {
+  loading: false,
+  success: true,
+};
+
+const statusRejected = {
   loading: false,
   success: false,
-  error: null,
-  products: [],
 };
 
 export const productsSlice = createSlice({
@@ -26,99 +56,89 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {
     resetErrors: (state) => {
-      state.error = null;
+      state.error = undefined;
     },
   },
   selectors: {
     getProducts: (state) => state.products,
-    getErrors: (state) => state.error,
-    loading: (state) => state.loading,
-    success: (state) => state.success,
+    getProductsStatus: (state) => state.status,
+    getProductsError: (state) => state.error,
   },
   extraReducers(builder) {
     builder
       // find all
       .addCase(findProducts.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.status.get = statusPending;
+        state.error = undefined;
       })
       .addCase(findProducts.fulfilled, (state, action) => {
-        state.loading = false;
+        state.status.get = statusFulfilled;
         state.products = action.payload;
-        state.error = null;
+        state.error = undefined;
       })
       .addCase(findProducts.rejected, (state, action) => {
-        state.loading = false;
+        state.status.get = statusRejected;
         state.error = action.error.message;
       });
 
     builder
       // create
       .addCase(createProduct.pending, (state) => {
-        state.loading = true;
-        state.success = false;
-        state.error = null;
+        state.status.create = statusPending;
+        state.error = undefined;
       })
       .addCase(createProduct.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
+        state.status.create = statusFulfilled;
         state.products = [...state.products, action.payload];
-        state.error = null;
+        state.error = undefined;
       })
       .addCase(createProduct.rejected, (state, action) => {
-        state.loading = false;
-        state.success = false;
+        state.status.create = statusRejected;
         state.error = action.error.message;
       });
 
     builder
       // update
       .addCase(updateProduct.pending, (state) => {
-        state.loading = true;
-        state.success = false;
-        state.error = null;
+        state.status.update = statusPending;
+        state.error = undefined;
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
+        state.status.update = statusFulfilled;
         const index = state.products.findIndex(
           (item) => item.id === action.payload.id
         );
         if (index !== -1) {
           state.products[index] = action.payload;
         }
-        state.error = null;
+        state.error = undefined;
       })
       .addCase(updateProduct.rejected, (state, action) => {
-        state.loading = false;
-        state.success = false;
+        state.status.update = statusRejected;
         state.error = action.error.message;
       });
 
     builder
       // delete
       .addCase(deleteProduct.pending, (state) => {
-        state.loading = true;
-        state.success = false;
-        state.error = null;
+        state.status.delete = statusPending;
+        state.error = undefined;
       })
       .addCase(deleteProduct.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
+        state.status.delete = statusFulfilled;
         state.products = state.products.filter(
-          (item) => item.id !== action.payload
+          (item) => item.id !== action.payload.id
         );
-        state.error = null;
+        state.error = undefined;
       })
       .addCase(deleteProduct.rejected, (state, action) => {
-        state.loading = false;
-        state.success = false;
+        state.status.delete = statusRejected;
         state.error = action.error.message;
       });
   },
 });
 
 export const { resetErrors } = productsSlice.actions;
-export const { getProducts, getErrors, loading, success } =
+export const { getProducts, getProductsStatus, getProductsError } =
   productsSlice.selectors;
 export default productsSlice;
