@@ -49,15 +49,11 @@ const Catalog = () => {
   useEffect(() => {
     dispatch(findProducts());
     dispatch(findProductCategories());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (!isLoading) setProductIdToUpdate(null);
-  }, [isLoading, setProductIdToUpdate]);
-
-  useEffect(() => {
-    if (isSuccess) setShowModalSaveProduct(false);
-  }, [isSuccess, setShowModalSaveProduct]);
+    if (isSuccess) {
+      setShowModalSaveProduct(false);
+      setProductIdToUpdate(null);
+    }
+  }, [dispatch, isSuccess, setShowModalSaveProduct, setProductIdToUpdate]);
 
   return (
     <CatalogUI
