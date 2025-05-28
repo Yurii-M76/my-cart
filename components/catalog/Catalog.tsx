@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from "@/services/store";
 import { findProducts } from "@/services/products/actions";
 import { findProductCategories } from "@/services/product-categories/actions";
 import {
-  getErrors,
   getProducts,
-  loading,
+  getProductsError,
+  getProductsStatus,
   resetErrors,
-  success,
 } from "@/services/products/productsSlice";
 import { getSelectedProducts } from "@/services/selectedProductsSlice";
 import { getProductCategories } from "@/services/product-categories/productCategoriesSlice";
@@ -20,11 +19,10 @@ import { CatalogUI, LoaderUI, SaveShoppingListUI } from "../ui";
 const Catalog = () => {
   const dispatch = useDispatch();
   const products = useSelector(getProducts);
+  const status = useSelector(getProductsStatus);
+  const errors = useSelector(getProductsError);
   const productsSelected = useSelector(getSelectedProducts);
   const productCategories = useSelector(getProductCategories);
-  const isLoading = useSelector(loading);
-  const isSuccess = useSelector(success);
-  const errors = useSelector(getErrors);
 
   const [showModalSaveCart, setShowModalSaveCart] = useState(false);
   const [showModalSaveProduct, setShowModalSaveProduct] = useState(false);
@@ -49,11 +47,18 @@ const Catalog = () => {
   useEffect(() => {
     dispatch(findProducts());
     dispatch(findProductCategories());
-    if (isSuccess) {
-      setShowModalSaveProduct(false);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (status.update.success) {
       setProductIdToUpdate(null);
+      setShowModalSaveProduct(false);
     }
-  }, [dispatch, isSuccess, setShowModalSaveProduct, setProductIdToUpdate]);
+
+    if (status.create.success || status.delete.success) {
+      setShowModalSaveProduct(false);
+    }
+  }, [status.create.success, status.delete.success, status.update.success]);
 
   return (
     <CatalogUI
@@ -93,7 +98,7 @@ const Catalog = () => {
         />
       </Modal>
 
-      {isLoading ? (
+      {status.get.loading ? (
         <LoaderUI color="gray" />
       ) : (
         <ProductList
