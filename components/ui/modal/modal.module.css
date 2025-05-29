@@ -11,8 +11,7 @@
   color: var(--color-dark);
   font-size: var(--font-size-md);
   background-color: var(--color-white);
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  transition: inline-size 0.15s linear;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, inline-size 0.15s linear;
 
   &:not(.fullScreen) {
     border-radius: clamp(0.75rem, calc(0.636rem + 0.568vw), 1rem); /* min: 12px, max: 16px */
