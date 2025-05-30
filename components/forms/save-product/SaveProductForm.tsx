@@ -1,13 +1,6 @@
 "use client";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "@/services/store";
-import {
-  createProduct,
-  deleteProduct,
-  updateProduct,
-} from "@/services/products/actions";
-import { getProductsStatus } from "@/services/products/productsSlice";
 import { ButtonUI, InputUI, SelectUI, TextAreaUI } from "@/components/ui";
 import { validateCategory, validateLabel, validatePrice } from "./validation";
 import {
@@ -15,6 +8,7 @@ import {
   TProductCategories,
   TProductUpdate,
   TSaveProduct,
+  TStatusThunk,
 } from "@/types";
 
 type TInitialState = {
@@ -26,20 +20,25 @@ type TInitialState = {
 
 type TSaveProductForm = {
   categories: TProductCategories[];
+  status: TStatusThunk;
   products?: TProduct[];
   updData?: TProduct;
   errorMessage?: string | null | undefined;
+  onSave: (data: TSaveProduct) => void;
+  onUpdate: (data: TProductUpdate) => void;
+  onDelete: () => void;
 };
 
 const SaveProductForm: FC<TSaveProductForm> = ({
   categories,
+  status,
   products,
   updData,
   errorMessage,
+  onSave,
+  onUpdate,
+  onDelete,
 }) => {
-  const dispatch = useDispatch();
-  const status = useSelector(getProductsStatus);
-
   const initialValues: TInitialState = {
     productName: updData?.label ?? "",
     description: updData?.description ?? "",
@@ -47,10 +46,17 @@ const SaveProductForm: FC<TSaveProductForm> = ({
     price: updData?.price ?? 0,
   };
 
-  const { register, getValues, formState, reset, handleSubmit, watch } =
-    useForm<TInitialState>({
-      defaultValues: initialValues,
-    });
+  const {
+    register,
+    getValues,
+    formState,
+    reset,
+    handleSubmit,
+    watch,
+    setValue,
+  } = useForm<TInitialState>({
+    defaultValues: initialValues,
+  });
 
   const { isDirty, errors } = formState;
 
@@ -72,7 +78,7 @@ const SaveProductForm: FC<TSaveProductForm> = ({
       categoryId: getValues().categorуId,
       price: +getValues().price,
     };
-    dispatch(createProduct(newProduct));
+    onSave(newProduct);
   };
 
   const onUpdateHandler = () => {
@@ -84,20 +90,27 @@ const SaveProductForm: FC<TSaveProductForm> = ({
         categoryId: getValues().categorуId,
         price: +getValues().price,
       };
-      dispatch(updateProduct(productUpdate));
+      onUpdate(productUpdate);
     }
   };
 
   const onDeleteHandler = () => {
     if (updData) {
-      dispatch(deleteProduct(updData?.id));
+      onDelete();
     }
+  };
+
+  const onResetHandler = () => {
+    reset();
+    setValue("productName", "");
+    setValue("categorуId", "");
+    setValue("price", 0);
   };
 
   return (
     <form
       onSubmit={handleSubmit(updData ? onUpdateHandler : onSaveHandler)}
-      onReset={() => reset()}
+      onReset={onResetHandler}
       noValidate
     >
       <InputUI
@@ -159,7 +172,7 @@ const SaveProductForm: FC<TSaveProductForm> = ({
           label="Очистить"
           color="light-gray"
           size="sm"
-          disabled={!isDirty}
+          disabled={updData ? false : !isDirty}
         />
         <ButtonUI
           type="submit"
