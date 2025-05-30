@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   createProduct,
   deleteProduct,
@@ -10,6 +10,7 @@ import { TProduct, TStatusThunk } from "@/types";
 type TInitialState = {
   status: TStatusThunk;
   products: TProduct[];
+  productToUpdate: TProduct | undefined;
   error?: string;
 };
 
@@ -33,6 +34,7 @@ const initialState: TInitialState = {
     },
   },
   products: [],
+  productToUpdate: undefined,
   error: undefined,
 };
 
@@ -58,11 +60,20 @@ export const productsSlice = createSlice({
     resetErrors: (state) => {
       state.error = undefined;
     },
+    setProductToUpdate: (state, action: PayloadAction<string>) => {
+      state.productToUpdate = state.products.find(
+        (product) => product.id === action.payload
+      );
+    },
+    resetProductToUpdate: (state) => {
+      state.productToUpdate = undefined;
+    },
   },
   selectors: {
     getProducts: (state) => state.products,
     getProductsStatus: (state) => state.status,
     getProductsError: (state) => state.error,
+    getProductToUpdate: (state) => state.productToUpdate,
   },
   extraReducers(builder) {
     builder
@@ -73,7 +84,9 @@ export const productsSlice = createSlice({
       })
       .addCase(findProducts.fulfilled, (state, action) => {
         state.status.get = statusFulfilled;
-        state.products = action.payload;
+        state.products = action.payload.sort((a, b) =>
+          a.label.localeCompare(b.label)
+        );
         state.error = undefined;
       })
       .addCase(findProducts.rejected, (state, action) => {
@@ -111,6 +124,7 @@ export const productsSlice = createSlice({
         if (index !== -1) {
           state.products[index] = action.payload;
         }
+        console.log(action.payload);
         state.error = undefined;
       })
       .addCase(updateProduct.rejected, (state, action) => {
@@ -138,7 +152,12 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { resetErrors } = productsSlice.actions;
-export const { getProducts, getProductsStatus, getProductsError } =
-  productsSlice.selectors;
+export const { resetErrors, setProductToUpdate, resetProductToUpdate } =
+  productsSlice.actions;
+export const {
+  getProducts,
+  getProductsStatus,
+  getProductsError,
+  getProductToUpdate,
+} = productsSlice.selectors;
 export default productsSlice;
