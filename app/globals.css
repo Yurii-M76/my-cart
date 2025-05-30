@@ -124,7 +124,8 @@ form {
   inline-size: 100%;
 }
 
-form > .formButtons {
+form > .formButtons,
+.buttonGroup {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
