@@ -8,18 +8,33 @@ const TextAreaUI: FC<TTextAreaUI> = ({
   variant,
   size,
   error,
+  leftSection,
+  rightSection,
   style,
   ...props
 }) => {
-  const classNamesInputWrapper = [
-    classes.inputWrapper,
+  const classNamesTextareaSection = [
+    classes.inputSection,
     !size ? classes.md : classes[size],
     !variant ? classes.column : classes[variant],
   ]
     .filter(Boolean)
     .join(" ");
 
-  const classNamesInput = [classes.textarea, error ? classes.inputError : null]
+  const classNamesTextareaWrapper = [
+    classes.textareaWrapper,
+    leftSection && classes.leftIcon,
+    rightSection && classes.rightIcon,
+    error && classes.inputError,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const classNamesTextarea = [
+    classes.textarea,
+    leftSection && classes.paddingLeft,
+    rightSection && classes.paddingRight,
+  ]
     .filter(Boolean)
     .join(" ");
 
@@ -28,19 +43,27 @@ const TextAreaUI: FC<TTextAreaUI> = ({
   );
 
   return (
-    <div className={classNamesInputWrapper} style={style}>
+    <div className={classNamesTextareaSection} style={style}>
       {label && (
         <label htmlFor={name} className={classes.label}>
           {label}
         </label>
       )}
-      <textarea
-        id={name}
-        key={name}
-        name={name}
-        className={classNamesInput}
-        {...props}
-      />
+      <div className={classNamesTextareaWrapper}>
+        {leftSection && (
+          <div className={classes["left-section"]}>{leftSection}</div>
+        )}
+        <textarea
+          id={name}
+          key={name}
+          name={name}
+          className={classNamesTextarea}
+          {...props}
+        />
+        {rightSection && (
+          <div className={classes["right-section"]}>{rightSection}</div>
+        )}
+      </div>
       {errorMessage}
     </div>
   );

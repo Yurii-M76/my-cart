@@ -9,19 +9,34 @@ const InputUI: FC<TInputUI> = ({
   placeholder,
   variant,
   size,
+  leftSection,
+  rightSection,
   error,
   style,
   ...props
 }) => {
-  const classNamesInputWrapper = [
-    classes.inputWrapper,
+  const classNamesInputSection = [
+    classes.inputSection,
     !size ? classes.md : classes[size],
     !variant ? classes.column : classes[variant],
   ]
     .filter(Boolean)
     .join(" ");
 
-  const classNamesInput = [classes.input, error ? classes.inputError : null]
+  const classNamesInputWrapper = [
+    classes.inputWrapper,
+    leftSection && classes.leftIcon,
+    rightSection && classes.rightIcon,
+    error && classes.inputError,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const classNamesInput = [
+    classes.input,
+    leftSection && classes.paddingLeft,
+    rightSection && classes.paddingRight,
+  ]
     .filter(Boolean)
     .join(" ");
 
@@ -30,7 +45,7 @@ const InputUI: FC<TInputUI> = ({
   );
 
   return (
-    <div className={classNamesInputWrapper} style={style}>
+    <div className={classNamesInputSection} style={style}>
       {label && (
         <label htmlFor={name} className={classes.label}>
           {label}
@@ -38,31 +53,47 @@ const InputUI: FC<TInputUI> = ({
       )}
       {type === "text" ? (
         <>
-          <input
-            type="text"
-            id={name}
-            key={name}
-            name={name}
-            placeholder={placeholder}
-            className={classNamesInput}
-            {...props}
-          />
+          <div className={classNamesInputWrapper}>
+            {leftSection && (
+              <div className={classes["left-section"]}>{leftSection}</div>
+            )}
+            <input
+              type="text"
+              id={name}
+              key={name}
+              name={name}
+              placeholder={placeholder}
+              className={classNamesInput}
+              {...props}
+            />
+            {rightSection && (
+              <div className={classes["right-section"]}>{rightSection}</div>
+            )}
+          </div>
           {errorMessage}
         </>
       ) : (
         <>
-          <input
-            type="number"
-            id={name}
-            key={name}
-            name={name}
-            min={0}
-            step={1}
-            pattern="[0-9]+([.][0-9]+)?"
-            placeholder={placeholder}
-            className={classNamesInput}
-            {...props}
-          />
+          <div className={classNamesInputWrapper}>
+            {leftSection && (
+              <div className={classes["left-section"]}>{leftSection}</div>
+            )}
+            <input
+              type="number"
+              id={name}
+              key={name}
+              name={name}
+              min={0}
+              step={1}
+              pattern="[0-9]+([.][0-9]+)?"
+              placeholder={placeholder}
+              className={classNamesInput}
+              {...props}
+            />
+            {rightSection && (
+              <div className={classes["right-section"]}>{rightSection}</div>
+            )}
+          </div>
           {errorMessage}
         </>
       )}
