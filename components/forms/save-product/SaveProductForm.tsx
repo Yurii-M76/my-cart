@@ -1,7 +1,14 @@
 "use client";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { ButtonUI, InputUI, SelectUI, TextAreaUI } from "@/components/ui";
+import {
+  ActionIconUI,
+  ButtonUI,
+  InputUI,
+  SelectUI,
+  TextAreaUI,
+  XIconUI,
+} from "@/components/ui";
 import { validateCategory, validateLabel, validatePrice } from "./validation";
 import {
   TProduct,
@@ -13,9 +20,9 @@ import {
 
 type TInitialState = {
   productName: string;
-  description: string;
   categorуId: string;
   price: number;
+  description?: string;
 };
 
 type TSaveProductForm = {
@@ -40,20 +47,21 @@ const SaveProductForm: FC<TSaveProductForm> = ({
   onDelete,
 }) => {
   const initialValues: TInitialState = {
-    productName: updData?.label ?? "",
-    description: updData?.description ?? "",
-    categorуId: updData?.category.id ?? "",
-    price: updData?.price ?? 0,
+    productName: "",
+    description: "",
+    categorуId: "",
+    price: 0,
   };
 
   const {
     register,
     getValues,
     formState,
-    reset,
     handleSubmit,
     watch,
     setValue,
+    reset,
+    resetField,
   } = useForm<TInitialState>({
     defaultValues: initialValues,
   });
@@ -102,10 +110,16 @@ const SaveProductForm: FC<TSaveProductForm> = ({
 
   const onResetHandler = () => {
     reset();
-    setValue("productName", "");
-    setValue("categorуId", "");
-    setValue("price", 0);
   };
+
+  useEffect(() => {
+    if (updData) {
+      setValue("productName", updData?.label);
+      setValue("description", updData?.description);
+      setValue("categorуId", String(updData?.category.id));
+      setValue("price", updData?.price);
+    }
+  }, [setValue, updData]);
 
   return (
     <form
@@ -122,12 +136,36 @@ const SaveProductForm: FC<TSaveProductForm> = ({
           validate: (value) => validateLabel(value, checkIsConflictLabel),
         })}
         error={errors.productName?.message}
+        rightSection={
+          watch().productName && (
+            <ActionIconUI
+              size="sm"
+              color="transparent"
+              variant="circle"
+              onClick={() => resetField("productName")}
+            >
+              <XIconUI />
+            </ActionIconUI>
+          )
+        }
       />
       <TextAreaUI
         label="Описание"
         size="lg"
         key={"description"}
         {...register("description")}
+        rightSection={
+          watch().description && (
+            <ActionIconUI
+              size="sm"
+              color="transparent"
+              variant="circle"
+              onClick={() => resetField("description")}
+            >
+              <XIconUI />
+            </ActionIconUI>
+          )
+        }
       />
       <SelectUI
         label="Категория"
@@ -141,6 +179,18 @@ const SaveProductForm: FC<TSaveProductForm> = ({
           validate: (value) => validateCategory(value),
         })}
         error={errors.categorуId?.message}
+        rightSection={
+          watch().categorуId && (
+            <ActionIconUI
+              size="sm"
+              color="transparent"
+              variant="circle"
+              onClick={() => resetField("categorуId")}
+            >
+              <XIconUI />
+            </ActionIconUI>
+          )
+        }
       />
       <InputUI
         type="number"
@@ -151,6 +201,19 @@ const SaveProductForm: FC<TSaveProductForm> = ({
           validate: (value) => validatePrice(value),
         })}
         error={errors.price?.message}
+        leftSection={"₽"}
+        rightSection={
+          watch().price ? (
+            <ActionIconUI
+              size="sm"
+              color="transparent"
+              variant="circle"
+              onClick={() => resetField("price")}
+            >
+              <XIconUI />
+            </ActionIconUI>
+          ) : undefined
+        }
       />
 
       {errorMessage && <span className="error">{errorMessage}</span>}
@@ -172,7 +235,7 @@ const SaveProductForm: FC<TSaveProductForm> = ({
           label="Очистить"
           color="light-gray"
           size="sm"
-          disabled={updData ? false : !isDirty}
+          disabled={!isDirty}
         />
         <ButtonUI
           type="submit"
