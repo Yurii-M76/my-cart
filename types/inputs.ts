@@ -1,4 +1,4 @@
-import { CSSProperties, SyntheticEvent } from "react";
+import { CSSProperties, ReactNode, SyntheticEvent } from "react";
 
 export type TInputUI = {
   type: "text" | "number";
@@ -9,6 +9,8 @@ export type TInputUI = {
   size?: "sm" | "md" | "lg" | "full";
   error?: string | undefined;
   style?: CSSProperties | undefined;
+  leftSection?: ReactNode | undefined;
+  rightSection?: ReactNode | undefined;
 };
 
 export type TTextAreaUI = Omit<TInputUI, "type">;
