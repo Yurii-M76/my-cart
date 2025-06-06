@@ -111,18 +111,21 @@
   border-left: 1px solid var(--color-light-gray);
 }
 
-.inputWrapper > input:focus-visible,
-.textareaWrapper > textarea:focus-visible,
-.selectWrapper > select:focus-visible {
-  border: 2px solid var(--color-light-blue);
-  outline-color: var(--color-light-blue);
-  outline-style: solid;
-  outline-width: 1px;
-}
-
 .inputWrapper > input::placeholder,
 .textareaWrapper > textarea::placeholder {
   color: var(--dimmed);
+}
+
+.input:focus-visible,
+.input:focus,
+.textarea:focus-visible,
+.textarea:focus,
+.select:focus-visible,
+.select:focus {
+  outline-color: var(--color-light-blue);
+  outline-offset: -2px;
+  outline-style: solid;
+  outline-width: 2px;
 }
 
 .inputError {

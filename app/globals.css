@@ -71,10 +71,7 @@ li {
 
 *:focus,
 *:focus-visible {
-  outline-color: var(--color-light-blue);
-  outline-offset: -2px;
-  outline-style: solid;
-  outline-width: 2px;
+  outline: none;
 }
 
 button:hover {
