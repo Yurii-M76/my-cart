@@ -15,9 +15,23 @@ const Modal: FC<TModal> = ({
   const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
   const [isVisible, setVisible] = useState(false);
 
+  const visibilityToggle = (isVisibi: boolean) => {
+    const visibility = setTimeout(() => {
+      setVisible(isVisibi);
+      clearTimeout(visibility);
+    }, 1);
+  };
+
+  const closeHandler = () => {
+    const close = setTimeout(() => {
+      clearTimeout(close);
+      return onClose();
+    }, 300);
+  };
+
   const closed = () => {
-    setVisible(false);
-    setTimeout(onClose, 300);
+    visibilityToggle(false);
+    closeHandler();
   };
 
   useEffect(() => {
@@ -33,11 +47,7 @@ const Modal: FC<TModal> = ({
   }, [onClose, setVisible]);
 
   useEffect(() => {
-    if (isOpen) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
+    visibilityToggle(isOpen ? true : false);
   }, [isOpen]);
 
   useEffect(() => {
