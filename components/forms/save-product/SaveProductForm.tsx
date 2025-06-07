@@ -2,12 +2,11 @@
 import { FC, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
-  ActionIconUI,
   ButtonUI,
   InputUI,
+  ListIconUI,
   SelectUI,
   TextAreaUI,
-  XIconUI,
 } from "@/components/ui";
 import { validateCategory, validateLabel, validatePrice } from "./validation";
 import {
@@ -135,37 +134,19 @@ const SaveProductForm: FC<TSaveProductForm> = ({
         {...register("productName", {
           validate: (value) => validateLabel(value, checkIsConflictLabel),
         })}
+        value={watch().productName}
+        onReset={() => resetField("productName")}
+        clearable
         error={errors.productName?.message}
-        rightSection={
-          watch().productName && (
-            <ActionIconUI
-              size="sm"
-              color="transparent"
-              variant="circle"
-              onClick={() => resetField("productName")}
-            >
-              <XIconUI />
-            </ActionIconUI>
-          )
-        }
       />
       <TextAreaUI
         label="Описание"
         size="lg"
         key={"description"}
         {...register("description")}
-        rightSection={
-          watch().description && (
-            <ActionIconUI
-              size="sm"
-              color="transparent"
-              variant="circle"
-              onClick={() => resetField("description")}
-            >
-              <XIconUI />
-            </ActionIconUI>
-          )
-        }
+        value={watch().description}
+        onReset={() => resetField("description")}
+        clearable
       />
       <SelectUI
         label="Категория"
@@ -178,19 +159,11 @@ const SaveProductForm: FC<TSaveProductForm> = ({
         {...register("categorуId", {
           validate: (value) => validateCategory(value),
         })}
+        leftSection={<ListIconUI width={18} height={18} />}
+        value={watch().categorуId}
+        onReset={() => resetField("categorуId")}
+        clearable
         error={errors.categorуId?.message}
-        rightSection={
-          watch().categorуId && (
-            <ActionIconUI
-              size="sm"
-              color="transparent"
-              variant="circle"
-              onClick={() => resetField("categorуId")}
-            >
-              <XIconUI />
-            </ActionIconUI>
-          )
-        }
       />
       <InputUI
         type="number"
@@ -200,20 +173,11 @@ const SaveProductForm: FC<TSaveProductForm> = ({
         {...register("price", {
           validate: (value) => validatePrice(value),
         })}
-        error={errors.price?.message}
         leftSection={"₽"}
-        rightSection={
-          watch().price ? (
-            <ActionIconUI
-              size="sm"
-              color="transparent"
-              variant="circle"
-              onClick={() => resetField("price")}
-            >
-              <XIconUI />
-            </ActionIconUI>
-          ) : undefined
-        }
+        value={watch().price}
+        onReset={() => resetField("price")}
+        clearable
+        error={errors.price?.message}
       />
 
       {errorMessage && <span className="error">{errorMessage}</span>}
