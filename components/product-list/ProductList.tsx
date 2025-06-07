@@ -1,13 +1,13 @@
 "use client";
 import { useDispatch, useSelector } from "@/services/store";
-
-import { ProductListFiltersUI, ProductListUI } from "../ui";
-import { TProduct, TProductSelected } from "@/types";
 import {
   getSelectedProducts,
   resetSelectedProducts,
   setSelectedProducts,
 } from "@/services/products/productsSlice";
+import { ProductListFilters } from "../product-list-filters";
+import { ProductListUI } from "../ui";
+import { TProduct, TProductSelected } from "@/types";
 
 const ProductList = ({
   items,
@@ -38,7 +38,7 @@ const ProductList = ({
         onClickItem={onClickItem}
         onResetSelectedItems={resetSelected}
       >
-        <ProductListFiltersUI />
+        <ProductListFilters />
       </ProductListUI>
     </>
   );
