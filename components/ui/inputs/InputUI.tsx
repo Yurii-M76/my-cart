@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { TInputUI } from "@/types";
 import classes from "./inputs.module.css";
+import { ActionIconUI } from "../action-icon";
+import { XIconUI } from "../icons";
 
 const InputUI: FC<TInputUI> = ({
   type,
@@ -13,6 +15,9 @@ const InputUI: FC<TInputUI> = ({
   rightSection,
   error,
   style,
+  clearable,
+  onReset,
+  value,
   ...props
 }) => {
   const classNamesInputSection = [
@@ -26,7 +31,7 @@ const InputUI: FC<TInputUI> = ({
   const classNamesInputWrapper = [
     classes.inputWrapper,
     leftSection && classes.leftIcon,
-    rightSection && classes.rightIcon,
+    !clearable && rightSection && classes.rightIcon,
     error && classes.inputError,
   ]
     .filter(Boolean)
@@ -34,6 +39,7 @@ const InputUI: FC<TInputUI> = ({
 
   const classNamesInput = [
     classes.input,
+    clearable && classes.clearable,
     leftSection && classes.paddingLeft,
     rightSection && classes.paddingRight,
   ]
@@ -66,8 +72,20 @@ const InputUI: FC<TInputUI> = ({
               className={classNamesInput}
               {...props}
             />
-            {rightSection && (
+            {!clearable && rightSection && (
               <div className={classes["right-section"]}>{rightSection}</div>
+            )}
+            {clearable && value && (
+              <div className={classes["reset-btn"]}>
+                <ActionIconUI
+                  size="sm"
+                  color="transparent"
+                  variant="circle"
+                  onClick={onReset}
+                >
+                  <XIconUI />
+                </ActionIconUI>
+              </div>
             )}
           </div>
           {errorMessage}
@@ -90,9 +108,21 @@ const InputUI: FC<TInputUI> = ({
               className={classNamesInput}
               {...props}
             />
-            {rightSection && (
+            {!clearable && rightSection && (
               <div className={classes["right-section"]}>{rightSection}</div>
             )}
+            {clearable && value ? (
+              <div className={classes["reset-btn"]}>
+                <ActionIconUI
+                  size="sm"
+                  color="transparent"
+                  variant="circle"
+                  onClick={onReset}
+                >
+                  <XIconUI />
+                </ActionIconUI>
+              </div>
+            ) : undefined}
           </div>
           {errorMessage}
         </>

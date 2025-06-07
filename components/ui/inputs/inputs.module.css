@@ -61,6 +61,10 @@
   font-family: inherit;
   font-size: inherit;
   background-color: transparent;
+
+  &.clearable {
+    padding-right: 38px;
+  }
 }
 
 .input,
@@ -78,7 +82,7 @@
   right: 0;
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 14px;
   color: inherit;
   block-size: inherit;
 }
@@ -126,6 +130,15 @@
   outline-offset: -2px;
   outline-style: solid;
   outline-width: 2px;
+}
+
+.reset-btn {
+  position: absolute;
+  right: 8px;
+}
+
+.clearable {
+  display: block;
 }
 
 .inputError {

@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { TSelectUI } from "@/types";
-import { ChevronDownIconUI } from "../icons";
+import { ChevronDownIconUI, XIconUI } from "../icons";
 import classes from "./inputs.module.css";
+import { ActionIconUI } from "../action-icon";
 
 const SelectUI: FC<TSelectUI> = ({
   name,
@@ -13,6 +14,9 @@ const SelectUI: FC<TSelectUI> = ({
   error,
   leftSection,
   rightSection,
+  clearable,
+  onReset,
+  value,
   onChange,
   ...props
 }) => {
@@ -27,7 +31,7 @@ const SelectUI: FC<TSelectUI> = ({
   const classNamesSelectWrapper = [
     classes.selectWrapper,
     leftSection && classes.leftIcon,
-    rightSection && classes.rightIcon,
+    !clearable && rightSection && classes.rightIcon,
     error ? classes.inputError : null,
   ]
     .filter(Boolean)
@@ -35,6 +39,7 @@ const SelectUI: FC<TSelectUI> = ({
 
   const classNamesSelect = [
     classes.select,
+    clearable && classes.clearable,
     leftSection && classes.paddingLeft,
     rightSection && classes.paddingRight,
   ]
@@ -74,11 +79,25 @@ const SelectUI: FC<TSelectUI> = ({
           <option key={0} value={undefined} />
           {options}
         </select>
-        <span className={classes.select__arrow_down}>
-          <ChevronDownIconUI width={16} height={16} />
-        </span>
-        {rightSection && (
+        {!value && (
+          <span className={classes.select__arrow_down}>
+            <ChevronDownIconUI width={18} height={18} />
+          </span>
+        )}
+        {!clearable && rightSection && (
           <div className={classes["right-section"]}>{rightSection}</div>
+        )}
+        {clearable && value && (
+          <div className={classes["reset-btn"]}>
+            <ActionIconUI
+              size="sm"
+              color="transparent"
+              variant="circle"
+              onClick={onReset}
+            >
+              <XIconUI />
+            </ActionIconUI>
+          </div>
         )}
       </div>
       {errorMessage}

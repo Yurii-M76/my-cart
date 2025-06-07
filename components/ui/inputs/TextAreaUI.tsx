@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { TTextAreaUI } from "@/types";
 import classes from "./inputs.module.css";
+import { ActionIconUI } from "../action-icon";
+import { XIconUI } from "../icons";
 
 const TextAreaUI: FC<TTextAreaUI> = ({
   name,
@@ -11,6 +13,9 @@ const TextAreaUI: FC<TTextAreaUI> = ({
   leftSection,
   rightSection,
   style,
+  clearable,
+  onReset,
+  value,
   ...props
 }) => {
   const classNamesTextareaSection = [
@@ -24,7 +29,7 @@ const TextAreaUI: FC<TTextAreaUI> = ({
   const classNamesTextareaWrapper = [
     classes.textareaWrapper,
     leftSection && classes.leftIcon,
-    rightSection && classes.rightIcon,
+    !clearable && rightSection && classes.rightIcon,
     error && classes.inputError,
   ]
     .filter(Boolean)
@@ -32,6 +37,7 @@ const TextAreaUI: FC<TTextAreaUI> = ({
 
   const classNamesTextarea = [
     classes.textarea,
+    clearable && classes.clearable,
     leftSection && classes.paddingLeft,
     rightSection && classes.paddingRight,
   ]
@@ -60,8 +66,20 @@ const TextAreaUI: FC<TTextAreaUI> = ({
           className={classNamesTextarea}
           {...props}
         />
-        {rightSection && (
+        {!clearable && rightSection && (
           <div className={classes["right-section"]}>{rightSection}</div>
+        )}
+        {clearable && value && (
+          <div className={classes["reset-btn"]}>
+            <ActionIconUI
+              size="sm"
+              color="transparent"
+              variant="circle"
+              onClick={onReset}
+            >
+              <XIconUI />
+            </ActionIconUI>
+          </div>
         )}
       </div>
       {errorMessage}
