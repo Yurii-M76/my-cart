@@ -5,12 +5,10 @@ import {
   useSelector as selectorHook,
 } from "react-redux";
 import productsSlice from "./products/productsSlice";
-import selectedProductsSlice from "./selectedProductsSlice";
 import productCategoriesSlice from "./product-categories/productCategoriesSlice";
 
 export const rootReducer = combineReducers({
   [productsSlice.reducerPath]: productsSlice.reducer,
-  [selectedProductsSlice.reducerPath]: selectedProductsSlice.reducer,
   [productCategoriesSlice.reducerPath]: productCategoriesSlice.reducer,
 });
 
