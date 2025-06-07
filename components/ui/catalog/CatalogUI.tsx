@@ -41,7 +41,6 @@ const CatalogUI: FC<TCatalog> = ({
             disabled={!selectedLength}
             onClick={onSaveCart}
             shadow
-            style={{ color: !selectedLength ? "var(--dimmed)" : undefined }}
           >
             <CartIconUI width={24} height={24} />
           </ActionIconUI>
