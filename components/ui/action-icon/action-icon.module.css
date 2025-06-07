@@ -15,7 +15,7 @@
   }
   &:disabled {
     box-shadow: none;
-    color: var(--color-light-gray);
+    color: var(--dimmed);
   }
 }
 
