@@ -32,7 +32,9 @@ export const productCategoriesSlice = createSlice({
       })
       .addCase(findProductCategories.fulfilled, (state, action) => {
         state.loading = false;
-        state.categories = action.payload;
+        state.categories = action.payload.sort((a, b) =>
+          a.label.localeCompare(b.label)
+        );
         state.error = null;
       })
       .addCase(findProductCategories.rejected, (state, action) => {
