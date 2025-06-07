@@ -5,12 +5,13 @@ import {
   findProducts,
   updateProduct,
 } from "./actions";
-import { TProduct, TStatusThunk } from "@/types";
+import { TProduct, TProductSelected, TStatusThunk } from "@/types";
 
 type TInitialState = {
   status: TStatusThunk;
   products: TProduct[];
   productToUpdate: TProduct | undefined;
+  selectedItems: TProductSelected[];
   error?: string;
 };
 
@@ -35,6 +36,7 @@ const initialState: TInitialState = {
   },
   products: [],
   productToUpdate: undefined,
+  selectedItems: [],
   error: undefined,
 };
 
@@ -68,12 +70,29 @@ export const productsSlice = createSlice({
     resetProductToUpdate: (state) => {
       state.productToUpdate = undefined;
     },
+    setSelectedProducts: (state, action: PayloadAction<TProductSelected>) => {
+      const existingItem = state.selectedItems.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (existingItem) {
+        state.selectedItems = state.selectedItems.filter(
+          (item) => item.id !== action.payload.id
+        );
+      } else {
+        state.selectedItems = [...state.selectedItems, action.payload];
+      }
+    },
+    resetSelectedProducts: (state) => {
+      state.selectedItems = [];
+    },
   },
   selectors: {
     getProducts: (state) => state.products,
     getProductsStatus: (state) => state.status,
     getProductsError: (state) => state.error,
     getProductToUpdate: (state) => state.productToUpdate,
+    getSelectedProducts: (state) => state.selectedItems,
   },
   extraReducers(builder) {
     builder
@@ -152,12 +171,18 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { resetErrors, setProductToUpdate, resetProductToUpdate } =
-  productsSlice.actions;
+export const {
+  resetErrors,
+  setProductToUpdate,
+  resetProductToUpdate,
+  setSelectedProducts,
+  resetSelectedProducts,
+} = productsSlice.actions;
 export const {
   getProducts,
   getProductsStatus,
   getProductsError,
   getProductToUpdate,
+  getSelectedProducts,
 } = productsSlice.selectors;
 export default productsSlice;
