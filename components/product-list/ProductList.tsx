@@ -1,9 +1,10 @@
 "use client";
-import { useDispatch } from "@/services/store";
+import { useDispatch, useSelector } from "@/services/store";
 
 import { ProductListFiltersUI, ProductListUI } from "../ui";
 import { TProduct, TProductSelected } from "@/types";
 import {
+  getSelectedProducts,
   resetSelectedProducts,
   setSelectedProducts,
 } from "@/services/products/productsSlice";
@@ -18,7 +19,7 @@ const ProductList = ({
   onClickItem: (id: string) => void;
 }) => {
   const dispath = useDispatch();
-
+  const selectedItemsLenght = useSelector(getSelectedProducts).length;
   const setSelected = ({ id, count }: TProductSelected) => {
     dispath(setSelectedProducts({ id, count }));
   };
@@ -32,6 +33,7 @@ const ProductList = ({
       <ProductListUI
         items={items}
         selectedItems={selectedItems}
+        selectedItemsLenght={selectedItemsLenght}
         onProductSelect={setSelected}
         onClickItem={onClickItem}
         onResetSelectedItems={resetSelected}
