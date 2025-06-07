@@ -117,6 +117,35 @@ select > option:checked {
   background-color: var(--color-light-gray);
 }
 
+textarea {
+  resize: vertical;
+  /* Для Firefox: толщина и цвет полосы */
+  scrollbar-width: thin; /* thin, auto, none */
+  scrollbar-color: var(--color-gray) var(--color-light-gray);  /* thumb color, track color */
+  /* Для IE 10+ */
+  -ms-overflow-style: auto; /* auto, none */
+}
+
+/* Chrome, Safari, Opera */
+textarea::-webkit-scrollbar {
+  width: 10px;
+  background: var(--color-light-gray);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: var(--color-gray);
+  border-radius: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-hover);
+}
+
+textarea::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+  border-radius: 10px;
+}
+
 form {
   display: flex;
   flex-direction: column;
