@@ -11,6 +11,9 @@ export type TInputUI = {
   style?: CSSProperties | undefined;
   leftSection?: ReactNode | undefined;
   rightSection?: ReactNode | undefined;
+  clearable?: boolean;
+  value?: string | number | undefined
+  onReset?: () => void;
 };
 
 export type TTextAreaUI = Omit<TInputUI, "type">;
