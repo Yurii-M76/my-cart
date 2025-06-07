@@ -11,3 +11,4 @@ export { default as SettingsIconUI } from "./SettingsIcon";
 export { default as AlertIconUI } from "./AlertIcon";
 export { default as XIconUI } from "./XIcon";
 export { default as ChevronDownIconUI } from "./ChevronDownIcon";
+export { default as ListIconUI } from "./ListIcon";
