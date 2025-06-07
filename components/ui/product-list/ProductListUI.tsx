@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react";
 import { ProductSelection } from "@/components/product-selection";
 import { MarkerUI } from "../marker";
 import { ActionIconUI } from "../action-icon";
-import { StarOfIconUI } from "../icons";
+import { StarOfIconUI, TagIconUI } from "../icons";
 import { TProduct, TProductSelected } from "@/types";
 import classes from "./product-list.module.css";
 
@@ -57,8 +57,7 @@ const ProductListUI: FC<TProductListUI> = ({
                 <div className={classes.property}>
                   <span className={classes.price}>{item.price} ₽</span>
                   <span className={classes.category}>
-                    {" "}
-                    • {item.category.label}
+                    <TagIconUI width={12} height={12} /> {item.category.label}
                   </span>
                 </div>
               </div>
