@@ -1,0 +1,249 @@
+.badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  font-family: inherit;
+  transition: background-color 0.1s, color 0.1s;
+  inline-size: fit-content;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    transform: scale(99%);
+  }
+}
+
+.filled {
+  color: var(--color-white);
+  &.white {
+    color: var(--color-dark);
+    background-color: var(--color-white);
+  }
+  &.dark {
+    background-color: var(--color-dark);
+    &:hover,
+    &.isActive {
+      border: 1px solid var(--color-dark);
+      color: var(--color-dark);
+      background-color: transparent;
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-dark-hover);
+      }
+    }
+  }
+  &.gray {
+    background-color: var(--color-gray);
+    &:hover,
+    &.isActive {
+      border: 1px solid var(--color-gray);
+      color: var(--color-gray);
+      background-color: transparent;
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-gray-hover);
+      }
+    }
+  }
+  &.light-gray {
+    color: var(--color-dark);
+    background-color: var(--color-light-gray);
+    &:hover,
+    &.isActive {
+      border: 1px solid var(--color-light-gray);
+      color: var(--color-gray);
+      background-color: transparent;
+      &:hover {
+        color: var(--color-gray);
+        background-color: var(--color-light-gray-hover);
+      }
+    }
+  }
+  &.blue {
+    background-color: var(--color-blue);
+    &:hover,
+    &.isActive {
+      border: 1px solid var(--color-gray);
+      color: var(--color-gray);
+      background-color: transparent;
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-gray-hover);
+      }
+    }
+  }
+  &.light-blue {
+    color: var(--color-dark);
+    background-color: var(--color-light-blue);
+    &:hover,
+    &.isActive {
+      border: 1px solid var(--color-light-blue);
+      color: var(--color-dark);
+      background-color: transparent;
+      &:hover {
+        color: var(--color-dark);
+        background-color: var(--color-light-blue-hover);
+      }
+    }
+  }
+  &.green {
+    background-color: var(--color-green);
+    &:hover,
+    &.isActive {
+      border: 1px solid var(--color-green);
+      color: var(--color-green);
+      background-color: transparent;
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-green-hover);
+      }
+    }
+  }
+  &.carrot {
+    background-color: var(--color-carrot);
+    &:hover,
+    &.isActive {
+      border: 1px solid var(--color-carrot);
+      color: var(--color-carrot);
+      background-color: transparent;
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-carrot-hover);
+      }
+    }
+  }
+  &.red {
+    background-color: var(--color-red);
+    &:hover,
+    &.isActive {
+      border: 1px solid var(--color-red);
+      color: var(--color-red);
+      background-color: transparent;
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-red-hover);
+      }
+    }
+  }
+}
+
+.outline {
+  &.white {
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+  }
+  &.dark {
+    border: 1px solid var(--color-dark);
+    color: var(--color-dark);
+    &:hover,
+    &.isActive {
+      color: var(--color-white);
+      background-color: var(--color-dark);
+      &:hover {
+        background-color: var(--color-dark-hover);
+      }
+    }
+  }
+  &.gray {
+    border: 1px solid var(--color-gray);
+    color: var(--color-gray);
+    &:hover,
+    &.isActive {
+      color: var(--color-white);
+      background-color: var(--color-gray);
+      &:hover {
+        background-color: var(--color-gray-hover);
+      }
+    }
+  }
+  &.light-gray {
+    border: 1px solid var(--color-light-gray);
+    color: var(--color-gray);
+    &:hover,
+    &.isActive {
+      color: var(--color-gray);
+      background-color: var(--color-light-gray);
+      &:hover {
+        background-color: var(--color-light-gray-hover);
+      }
+    }
+  }
+  &.blue {
+    border: 1px solid var(--color-blue);
+    color: var(--color-blue);
+    &:hover,
+    &.isActive {
+      color: var(--color-white);
+      background-color: var(--color-blue);
+      &:hover {
+        background-color: var(--color-blue-hover);
+      }
+    }
+  }
+  &.light-blue {
+    border: 1px solid var(--color-light-blue);
+    color: var(--color-blue);
+    &:hover,
+    &.isActive {
+      color: var(--color-blue);
+      background-color: var(--color-light-blue);
+      &:hover {
+        background-color: var(--color-light-blue-hover);
+      }
+    }
+  }
+  &.green {
+    border: 1px solid var(--color-green);
+    color: var(--color-green);
+    &:hover,
+    &.isActive {
+      color: var(--color-white);
+      background-color: var(--color-green);
+      &:hover {
+        background-color: var(--color-green-hover);
+      }
+    }
+  }
+  &.carrot {
+    border: 1px solid var(--color-carrot);
+    color: var(--color-carrot);
+    &:hover,
+    &.isActive {
+      color: var(--color-white);
+      background-color: var(--color-carrot);
+      &:hover {
+        background-color: var(--color-carrot-hover);
+      }
+    }
+  }
+  &.red {
+    border: 1px solid var(--color-red);
+    color: var(--color-red);
+    &:hover,
+    &.isActive {
+      color: var(--color-white);
+      background-color: var(--color-red);
+      &:hover {
+        background-color: var(--color-red-hover);
+      }
+    }
+  }
+}
+
+.sm {
+  padding: 3px 11px;
+  font-size: calc(var(--font-size-xs) - 10%);
+}
+
+.md {
+  padding: 4px 12px;
+  font-size: calc(var(--font-size-xs) - 5%);
+}
+
+.lg {
+  padding: 5px 13px;
+  font-size: var(--font-size-xs);
+}
