@@ -1,9 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
 import { useDispatch } from "@/services/store";
-import { setSelectedProducts } from "@/services/selectedProductsSlice";
-import { ProductListUI } from "../ui";
+
+import { ProductListFiltersUI, ProductListUI } from "../ui";
 import { TProduct, TProductSelected } from "@/types";
+import {
+  resetSelectedProducts,
+  setSelectedProducts,
+} from "@/services/products/productsSlice";
 
 const ProductList = ({
   items,
@@ -15,30 +18,26 @@ const ProductList = ({
   onClickItem: (id: string) => void;
 }) => {
   const dispath = useDispatch();
-  const [selectedList, setSelectedList] =
-    useState<TProductSelected[]>(selectedItems);
 
-  const setList = ({ id, count }: TProductSelected) => {
-    const existingItem = selectedList.find((item) => item.id === id);
-    if (existingItem) {
-      setSelectedList(selectedList.filter((item) => item.id !== id));
-    } else {
-      setSelectedList((prev) => [...prev, { id, count }]);
-    }
+  const setSelected = ({ id, count }: TProductSelected) => {
+    dispath(setSelectedProducts({ id, count }));
   };
 
-  useEffect(() => {
-    dispath(setSelectedProducts(selectedList));
-  }, [dispath, selectedList]);
+  const resetSelected = () => {
+    dispath(resetSelectedProducts());
+  };
 
   return (
     <>
       <ProductListUI
         items={items}
         selectedItems={selectedItems}
-        onProductSelect={setList}
+        onProductSelect={setSelected}
         onClickItem={onClickItem}
-      />
+        onResetSelectedItems={resetSelected}
+      >
+        <ProductListFiltersUI />
+      </ProductListUI>
     </>
   );
 };
