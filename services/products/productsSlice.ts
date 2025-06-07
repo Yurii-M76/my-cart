@@ -12,6 +12,7 @@ type TInitialState = {
   products: TProduct[];
   productToUpdate: TProduct | undefined;
   selectedItems: TProductSelected[];
+  originalItems: TProduct[];
   error?: string;
 };
 
@@ -37,6 +38,7 @@ const initialState: TInitialState = {
   products: [],
   productToUpdate: undefined,
   selectedItems: [],
+  originalItems: [],
   error: undefined,
 };
 
@@ -85,6 +87,16 @@ export const productsSlice = createSlice({
     },
     resetSelectedProducts: (state) => {
       state.selectedItems = [];
+    },
+    filterProductsByCategory: (state, action: PayloadAction<string>) => {
+      state.originalItems = state.products;
+      state.products = state.products.filter(
+        (item) => item.category.id === action.payload
+      );
+    },
+    resetFilterProductsByCategory: (state) => {
+      state.products = state.originalItems;
+      state.originalItems = [];
     },
   },
   selectors: {
@@ -177,6 +189,8 @@ export const {
   resetProductToUpdate,
   setSelectedProducts,
   resetSelectedProducts,
+  filterProductsByCategory,
+  resetFilterProductsByCategory,
 } = productsSlice.actions;
 export const {
   getProducts,
