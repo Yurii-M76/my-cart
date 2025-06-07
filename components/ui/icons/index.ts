@@ -13,3 +13,4 @@ export { default as XIconUI } from "./XIcon";
 export { default as ChevronDownIconUI } from "./ChevronDownIcon";
 export { default as ListIconUI } from "./ListIcon";
 export { default as StarOfIconUI } from "./StarOfIcon";
+export { default as TagIconUI } from "./TagIcon";
