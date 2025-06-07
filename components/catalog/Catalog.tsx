@@ -13,11 +13,11 @@ import {
   getProductsError,
   getProductsStatus,
   getProductToUpdate,
+  getSelectedProducts,
   resetErrors,
   resetProductToUpdate,
   setProductToUpdate,
 } from "@/services/products/productsSlice";
-import { getSelectedProducts } from "@/services/selectedProductsSlice";
 import { getProductCategories } from "@/services/product-categories/productCategoriesSlice";
 import { ProductList } from "../product-list";
 import { Modal } from "../modal";
