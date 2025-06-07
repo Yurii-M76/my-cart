@@ -10,8 +10,12 @@
   color: var(--color-dark);
   transition: transform 0.08s linear;
 
-  &:hover {
+  &:not(:disabled):hover {
     transform: scale(110%);
+  }
+  &:disabled {
+    box-shadow: none;
+    color: var(--color-light-gray);
   }
 }
 
