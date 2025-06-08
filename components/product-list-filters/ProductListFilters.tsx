@@ -15,8 +15,14 @@ const ProductListFilters = () => {
 
   const filteredByCategory = (id: string) => {
     if (currentCategoryId) {
-      setCurrentCategoryId("");
-      dispatch(resetFilterProductsByCategory());
+      if (currentCategoryId === id) {
+        setCurrentCategoryId("");
+        dispatch(resetFilterProductsByCategory());
+      } else if (currentCategoryId !== id) {
+        setCurrentCategoryId(id);
+        dispatch(resetFilterProductsByCategory())
+        dispatch(filterProductsByCategory(id));
+      }
     } else {
       setCurrentCategoryId(id);
       dispatch(filterProductsByCategory(id));
