@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react";
 import { ProductSelection } from "@/components/product-selection";
 import { MarkerUI } from "../marker";
+import { AlertUI } from "../alert";
 import { ActionIconUI } from "../action-icon";
 import { StarOfIconUI, TagIconUI } from "../icons";
 import { TProduct, TProductSelected } from "@/types";
@@ -42,6 +43,13 @@ const ProductListUI: FC<TProductListUI> = ({
           <StarOfIconUI />
         </ActionIconUI>
       </div>
+
+      {!items.length && (
+        <AlertUI icon color="light-gray" variant="filled">
+          <p>нет данных</p>
+        </AlertUI>
+      )}
+
       <ul className={classes.items}>
         {items.map((item) => (
           <li key={item.id} className={classes.item}>

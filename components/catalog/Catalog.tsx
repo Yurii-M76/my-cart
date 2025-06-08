@@ -72,7 +72,7 @@ const Catalog = () => {
     setProductIdToUpdate(null);
     setShowModalProductSave(false);
     setIsDelete(false);
-    dispatch(resetProductToUpdate())
+    dispatch(resetProductToUpdate());
     if (errors) {
       dispatch(resetErrors());
     }
@@ -102,17 +102,6 @@ const Catalog = () => {
         />
       </div>
     </>
-  );
-
-  const noData = (
-    <AlertUI icon color="light-gray" variant="filled">
-      <p>
-        Нет данных -{" "}
-        <a href="#" onClick={() => setShowModalProductSave(true)}>
-          добавить
-        </a>
-      </p>
-    </AlertUI>
   );
 
   useEffect(() => {
@@ -196,9 +185,7 @@ const Catalog = () => {
         )}
       </Modal>
 
-      {!products.length && status.get.success ? (
-        noData
-      ) : status.get.loading ? (
+      {status.get.loading ? (
         <LoaderUI color="gray" />
       ) : (
         <ProductList
